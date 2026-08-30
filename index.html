@@ -379,6 +379,16 @@
   .contact-photo .ph{ position:absolute; inset:0; }
   .form-note{ font-size:13px; color:var(--muted); margin-top:14px; }
   .on-navy .form-note{ color:rgba(255,255,255,.5); }
+  .form-status{
+    margin-top:16px; font-size:14.5px; line-height:1.6; display:none;
+    padding:12px 16px; border-radius:var(--r); border:1.5px solid transparent;
+  }
+  .form-status.is-ok, .form-status.is-err{ display:block; }
+  .on-light .form-status.is-ok{ background:#EDF6F0; border-color:#BEDDCA; color:#1E5233; }
+  .on-light .form-status.is-err{ background:#FBEEEE; border-color:#E8C6C6; color:#8A2B2B; }
+  .on-navy .form-status.is-ok{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.4); color:#fff; }
+  .on-navy .form-status.is-err{ background:rgba(255,190,190,.15); border-color:rgba(255,190,190,.5); color:#FFD9D9; }
+  button[disabled]{ opacity:.6; cursor:progress; }
   @media (max-width:880px){
     .contact-band{ padding:64px 0; }
     .contact-grid{ grid-template-columns:1fr; gap:36px; }
@@ -669,7 +679,7 @@
   <div class="wrap">
 
     <!-- ===== BEAM REAL ESTATE LOGO =====================================
-         Nothing to edit here. Save the logo as  images/beam-logo.png
+         Nothing to edit here. Save the logo as  beam-logo.png
          and it appears automatically, on every page.
          (To use a different filename, change beamLogo in the IMAGES
          list near the top of the script at the bottom of this file.)
@@ -739,71 +749,96 @@
    SAFE TO EXPERIMENT: if a photo is missing or the name doesn't
    match, that spot just shows a colored placeholder. Nothing breaks.
 
-   PHOTO SIZES — this is what makes them look sharp or blurry:
+   ┌──────────────────────────────────────────────────────────┐
+   │  EXACT PHOTO SIZES — THIS IS WHY PHOTOS LOOK BLURRY       │
+   └──────────────────────────────────────────────────────────┘
 
-     Slideshow (hero-1.jpg …)  at least 2000 x 1100 pixels
-     Ajay's photo (ajay.jpg)   at least  800 x 1000 pixels (upright)
-     Contact photo             at least 1000 x 1250 pixels (upright)
-     Blog photos               at least  900 x  560 pixels
-     Beam logo                 .png with a transparent background
+   Modern laptops (any MacBook, most Windows laptops) have "Retina"
+   or "HiDPI" screens that pack 2 real pixels into every 1 pixel the
+   webpage measures in. So a slideshow photo that fills a 1440-wide
+   MacBook actually has to be 2880 pixels wide to look sharp. A
+   1500-pixel photo gets stretched to double size and looks soft —
+   this is almost certainly what you are seeing.
 
-     A photo SMALLER than these gets stretched to fit and looks
-     blurry. There is no way to fix that in code — the detail isn't
-     in the file. Right-click a photo and check "Get Info" (Mac) or
-     "Properties → Details" (Windows) to see its pixel size.
+   USE THESE SIZES:
 
-     Don't save images by right-clicking them on a webpage — those
-     are usually shrunken copies (600px or less) and will look soft.
-     Use the original file from the camera or the photographer.
+     Slideshow  img1.jpg …    3000 x 1700   <- the big one
+     Ajay       ajay.jpg      1000 x 1250   (upright)
+     Contact    contact.jpg   1000 x 1250   (upright)
+     Blog       blog-*.jpg    1800 x 1100
+     Logo       beam-logo.png  600 wide, transparent background
+
+   Bigger than this is fine and will still look sharp. SMALLER is the
+   problem — no code can add detail that isn't in the file.
+
+   HOW TO CHECK A PHOTO'S SIZE:
+     Mac      — right-click the file, Get Info, look at "Dimensions"
+     Windows  — right-click, Properties, Details tab, "Dimensions"
+
+   WHERE TO GET PHOTOS BIG ENOUGH:
+     • The original file from the camera or the photographer
+     • MLS / listing photos downloaded at full size
+     • Free stock sites (Unsplash, Pexels) — choose the "Original"
+       or largest download option, not the preview
+     • NOT right-click-save from a webpage. Those are shrunken
+       display copies, usually under 1000 pixels, and will look
+       blurry no matter what.
 
    SHAPE — why a photo might look cut off:
 
      The slideshow is a wide letterbox strip, so a tall photo gets
-     its top and bottom trimmed to fit. Use wide (landscape) photos
-     there. Ajay's photo and the contact photo are upright frames,
-     so use upright photos for those.
+     its top and bottom trimmed. Use wide (landscape) photos there.
+     Ajay's photo and the contact photo are upright frames, so use
+     upright photos for those.
 
    OTHER TIPS:
-     • Use .jpg for photos. Keep each one under about 1 MB so the
-       page loads fast — any "compress jpeg" website will do this.
-       (Compressing does NOT cause blurriness; being too small does.)
-     • To add a 7th slideshow photo, copy a line and change the number.
-       To use fewer, delete a line. Keep the commas between lines.
+     • Use .jpg for photos. Aim for under about 1.5 MB each so pages
+       load fast. Compressing does NOT cause blurriness — only being
+       too small does. Compress AFTER sizing, never resize smaller.
+     • To add a 7th slideshow photo, copy a line and change the
+       number. To use fewer, delete a line. Keep the commas.
    ================================================================== */
 var IMAGES = {
 
   // Homepage slideshow, in the order they appear
   hero: [
-    'img1.jpg',
+    'image1.jpg',
     'img2.jpg',
     'img3.jpg',
     'img4.jpg',
-    'img5.jpg'
+    'img5.jpg',
+    'img6.jpg'
   ],
 
   headshot: 'ajay.jpg',        // Ajay's photo (About, Mortgage, Contact)
   contact:  'contact.jpg',     // photo beside the homepage contact form
-  beamLogo: 'beam-logo.jpg'    // Beam Real Estate logo in the footer
+  beamLogo: 'beam-logo.png'    // Beam Real Estate logo in the footer
 
-  // BLOG PHOTOS are listed further down, next to each post — search this
-  // file for  images/blog/  to find them. Each post names its own file,
-  // e.g. images/blog/richwoods.jpg, and that same photo is used both on
-  // the blog card and at the top of the article.
+  // BLOG PHOTOS are named further down, next to each post. They all start
+  // with  blog-  so they sort together in the folder, e.g. blog-richwoods.jpg
+  // Search this file for  blog-  to see the full list.
 
 };
+
+// Where the contact forms send to. Change this and both forms follow.
+var CONTACT_EMAIL = 'ajaybprabhu@gmail.com';
+
 /* ================= end of the part you need to edit ================ */
 
 /* WHERE EVERY PHOTO GOES — the full list
    ------------------------------------------------------------------
-   images/hero-1.jpg … hero-6.jpg   homepage slideshow
-   images/ajay.jpg                  About, Mortgage, Contact pages
-   images/contact.jpg               beside the homepage contact form
-   images/beam-logo.png             footer, every page
-   images/blog/<name>.jpg           one per blog post (41 of them)
+   All files sit in the SAME folder as this index.html file.
+   No subfolders.
+
+   img1.jpg … img6.jpg    homepage slideshow
+   ajay.jpg               About, Mortgage, Contact pages
+   contact.jpg            beside the homepage contact form
+   beam-logo.png          footer, every page
+   blog-*.jpg             one per blog post (41 of them)
 
    Don't want to hunt for filenames? Open the site in a browser. Every
    empty photo slot shows a small dark tag in its corner with the exact
-   filename it's waiting for — "add images/blog/richwoods.jpg". The tag
+   filename it's waiting for — "add blog-richwoods.jpg". The tag
    vanishes the moment you add that file.
    ------------------------------------------------------------------ */
 
@@ -890,7 +925,7 @@ var IMAGES = {
   ];
 
   // "Choose Ajay Prabhu" vs "Choose Me" wording preserved per post, as on the live site.
-  // Each town guide also gets its own image slot: images/blog/guide-<town>.jpg
+  // Each town guide also gets its own image slot: blog-guide-<town>.jpg
   function guide(town, self, meta){
     return {
       t: 'The Ultimate Guide to Buying and Selling Real Estate in ' + town
@@ -898,30 +933,30 @@ var IMAGES = {
        + ' as Your Indian Desi Realtor Real Estate Agent and Loan Officer',
       tag: 'Area Guide',
       m:   meta || (town + ', TX'),
-      img: 'images/blog/guide-' + town.toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.jpg'
+      img: 'blog-guide-' + town.toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.jpg'
     };
   }
   var POSTS = [
-    { t:'5 Home Seller Strategies for Staging Your Home Perfectly', tag:'Selling',   m:'Seller tips', img:'images/blog/staging-home.jpg' },
-    { t:'5 Tips for Buying a Home',                                 tag:'Buying',    m:'Buyer tips', img:'images/blog/5-tips-buying.jpg' },
-    { t:'Amenities and Special Features of Richwoods Frisco',       tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods-amenities.jpg' },
-    { t:'Best Builders in Grove Frisco',                            tag:'Community', m:'Frisco, TX', img:'images/blog/grove-builders.jpg' },
-    { t:'Cashback Rebate Discount Realtor Dallas',                  tag:'Buying',    m:'Dallas, TX', img:'images/blog/cashback-rebate.jpg' },
-    { t:'Community Living at Its Best in Lexington, Frisco',        tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-community.jpg' },
-    { t:'Dealing with Financing',                                   tag:'Mortgage',  m:'Buyer guide', img:'images/blog/dealing-with-financing.jpg' },
-    { t:'Features and Amenities of The Grove in Frisco',            tag:'Community', m:'Frisco, TX', img:'images/blog/grove-features.jpg' },
-    { t:'Indian Desi Realtor Dallas',                               tag:'Buying',    m:'Dallas, TX', img:'images/blog/desi-realtor-dallas.jpg' },
-    { t:'Lexington Country in Frisco',                              tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-country.jpg' },
-    { t:'Luxury Living with Landon Homes at Lexington in Frisco',   tag:'Community', m:'Frisco, TX', img:'images/blog/landon-homes.jpg' },
-    { t:'Municipal Utility District (MUD) Taxes and Public Improvement District (PID) Assessments: Pros and Cons', tag:'Mortgage', m:'Buyer guide', img:'images/blog/mud-pid-taxes.jpg' },
-    { t:'Preparing to Sell',                                        tag:'Selling',   m:'Seller tips', img:'images/blog/preparing-to-sell.jpg' },
-    { t:'Pros and Cons of Richwoods, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods-pros-cons.jpg' },
-    { t:'Pros and Cons of The Grove, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/grove-pros-cons.jpg' },
-    { t:'Relocating to the Big City',                               tag:'Buying',    m:'Buyer guide', img:'images/blog/relocating.jpg' },
-    { t:'Richwoods Frisco',                                         tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods.jpg' },
-    { t:'Smart Buyer&rsquo;s Guide to Choosing the Perfect Property', tag:'Buying',  m:'Buyer guide', img:'images/blog/smart-buyers-guide.jpg' },
-    { t:'The 4 Most Important Questions You Need to Ask Before Selling Your Home', tag:'Selling', m:'Seller tips', img:'images/blog/4-questions-before-selling.jpg' },
-    { t:'The 5 Biggest Mistakes to Avoid When Buying Your First Home', tag:'Buying', m:'Buyer tips', img:'images/blog/5-mistakes-first-home.jpg' },
+    { t:'5 Home Seller Strategies for Staging Your Home Perfectly', tag:'Selling',   m:'Seller tips', img:'blog-staging-home.jpg' },
+    { t:'5 Tips for Buying a Home',                                 tag:'Buying',    m:'Buyer tips', img:'blog-5-tips-buying.jpg' },
+    { t:'Amenities and Special Features of Richwoods Frisco',       tag:'Community', m:'Frisco, TX', img:'blog-richwoods-amenities.jpg' },
+    { t:'Best Builders in Grove Frisco',                            tag:'Community', m:'Frisco, TX', img:'blog-grove-builders.jpg' },
+    { t:'Cashback Rebate Discount Realtor Dallas',                  tag:'Buying',    m:'Dallas, TX', img:'blog-cashback-rebate.jpg' },
+    { t:'Community Living at Its Best in Lexington, Frisco',        tag:'Community', m:'Frisco, TX', img:'blog-lexington-community.jpg' },
+    { t:'Dealing with Financing',                                   tag:'Mortgage',  m:'Buyer guide', img:'blog-dealing-with-financing.jpg' },
+    { t:'Features and Amenities of The Grove in Frisco',            tag:'Community', m:'Frisco, TX', img:'blog-grove-features.jpg' },
+    { t:'Indian Desi Realtor Dallas',                               tag:'Buying',    m:'Dallas, TX', img:'blog-desi-realtor-dallas.jpg' },
+    { t:'Lexington Country in Frisco',                              tag:'Community', m:'Frisco, TX', img:'blog-lexington-country.jpg' },
+    { t:'Luxury Living with Landon Homes at Lexington in Frisco',   tag:'Community', m:'Frisco, TX', img:'blog-landon-homes.jpg' },
+    { t:'Municipal Utility District (MUD) Taxes and Public Improvement District (PID) Assessments: Pros and Cons', tag:'Mortgage', m:'Buyer guide', img:'blog-mud-pid-taxes.jpg' },
+    { t:'Preparing to Sell',                                        tag:'Selling',   m:'Seller tips', img:'blog-preparing-to-sell.jpg' },
+    { t:'Pros and Cons of Richwoods, Frisco',                       tag:'Community', m:'Frisco, TX', img:'blog-richwoods-pros-cons.jpg' },
+    { t:'Pros and Cons of The Grove, Frisco',                       tag:'Community', m:'Frisco, TX', img:'blog-grove-pros-cons.jpg' },
+    { t:'Relocating to the Big City',                               tag:'Buying',    m:'Buyer guide', img:'blog-relocating.jpg' },
+    { t:'Richwoods Frisco',                                         tag:'Community', m:'Frisco, TX', img:'blog-richwoods.jpg' },
+    { t:'Smart Buyer&rsquo;s Guide to Choosing the Perfect Property', tag:'Buying',  m:'Buyer guide', img:'blog-smart-buyers-guide.jpg' },
+    { t:'The 4 Most Important Questions You Need to Ask Before Selling Your Home', tag:'Selling', m:'Seller tips', img:'blog-4-questions-before-selling.jpg' },
+    { t:'The 5 Biggest Mistakes to Avoid When Buying Your First Home', tag:'Buying', m:'Buyer tips', img:'blog-5-mistakes-first-home.jpg' },
     guide('Allen'),
     guide('Anna'),
     guide('Aubrey'),
@@ -940,9 +975,9 @@ var IMAGES = {
     guide('Princeton', true),
     guide('Prosper'),
     guide('Wylie', true),
-    { t:'Toll Brothers in Lexington, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/toll-brothers.jpg' },
-    { t:'Top Home Builders in Lexington Frisco',                    tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-builders.jpg' },
-    { t:'Why Working With a Real Estate Professional is the Best Decision You&rsquo;ll Ever Make', tag:'Buying', m:'Buyer guide', img:'images/blog/why-work-with-a-pro.jpg' }
+    { t:'Toll Brothers in Lexington, Frisco',                       tag:'Community', m:'Frisco, TX', img:'blog-toll-brothers.jpg' },
+    { t:'Top Home Builders in Lexington Frisco',                    tag:'Community', m:'Frisco, TX', img:'blog-lexington-builders.jpg' },
+    { t:'Why Working With a Real Estate Professional is the Best Decision You&rsquo;ll Ever Make', tag:'Buying', m:'Buyer guide', img:'blog-why-work-with-a-pro.jpg' }
   ];
 
   // stable slugs / ids for the detail routes
@@ -1008,14 +1043,32 @@ var IMAGES = {
 
   var CONTACT_FORM_FIELDS =
       '<div class="field-row">'
-    + '<div class="field"><label for="fn">First name*</label><input id="fn" type="text" placeholder="First name" required></div>'
-    + '<div class="field"><label for="ln">Last name*</label><input id="ln" type="text" placeholder="Last name" required></div>'
+    + '<div class="field"><label for="fn">First name*</label><input id="fn" name="First name" type="text" autocomplete="given-name" placeholder="First name" required></div>'
+    + '<div class="field"><label for="ln">Last name*</label><input id="ln" name="Last name" type="text" autocomplete="family-name" placeholder="Last name" required></div>'
     + '</div>'
     + '<div class="field-row">'
-    + '<div class="field"><label for="phn">Phone*</label><input id="phn" type="tel" placeholder="(469) 000-0000" required></div>'
-    + '<div class="field"><label for="em">Email*</label><input id="em" type="email" placeholder="you@email.com" required></div>'
+    + '<div class="field"><label for="phn">Phone*</label><input id="phn" name="Phone" type="tel" autocomplete="tel" placeholder="(469) 000-0000" required></div>'
+    + '<div class="field"><label for="em">Email*</label><input id="em" name="email" type="email" autocomplete="email" placeholder="you@email.com" required></div>'
     + '</div>'
-    + '<div class="field"><label for="msg">Your message*</label><textarea id="msg" placeholder="Tell me a little about what you\'re looking for." required></textarea></div>';
+    + '<div class="field"><label for="msg">Your message*</label><textarea id="msg" name="Message" placeholder="Tell me a little about what you\'re looking for." required></textarea></div>';
+
+  // Spam trap: real people never see this, bots fill it in and get dropped.
+  var HONEYPOT = '<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">';
+
+  // The maths question, filled in with random numbers when the form is built.
+  var MATH_FIELD =
+      '<div class="field"><label for="sec" data-math-label>Security question*</label>'
+    + '<input id="sec" data-math type="text" inputmode="numeric" autocomplete="off" required></div>';
+
+  function contactForm(btnClass, withMath){
+    return '<form data-contact novalidate>'
+      + HONEYPOT
+      + CONTACT_FORM_FIELDS
+      + (withMath ? MATH_FIELD : '')
+      + '<button type="submit" class="btn ' + btnClass + '">Send message</button>'
+      + '<p class="form-status" role="status" aria-live="polite"></p>'
+      + '</form>';
+  }
 
   /* =========================================================
      Page templates
@@ -1077,10 +1130,7 @@ var IMAGES = {
     +     '<div class="head"><h2 class="sec-title">Would love to hear from you</h2>'
     +     '<p>Get in touch with me by filling out the form below, and I will get right back to you. You can also call or text me at any time.</p></div>'
     +     '<div class="contact-grid">'
-    +       '<form onsubmit="return false;">' + CONTACT_FORM_FIELDS
-    +         '<button type="submit" class="btn btn-light">Send message</button>'
-    +         '<p class="form-note">Demo form &mdash; not yet wired to a mail service.</p>'
-    +       '</form>'
+    +       contactForm('btn-light', false)
     +       '<div class="contact-photo">' + photo(IMAGES.contact, W.consult, fileLabel(IMAGES.contact)) + '</div>'
     +     '</div>'
     +   '</div>'
@@ -1251,12 +1301,7 @@ var IMAGES = {
     +   '<div class="rule"></div>'
     + '</div></section>'
     + '<section class="section tight"><div class="wrap"><div class="contact-grid on-light">'
-    +   '<form onsubmit="return false;">' + CONTACT_FORM_FIELDS
-    +     '<div class="field"><label for="sec">Security question*</label>'
-    +     '<input id="sec" type="text" placeholder="1 + 9 = ?" required></div>'
-    +     '<button type="submit" class="btn btn-solid">Send message</button>'
-    +     '<p class="form-note">Demo form &mdash; not yet wired to a mail service.</p>'
-    +   '</form>'
+    +   contactForm('btn-solid', true)
     +   '<div>'
     +     '<div class="contact-photo" style="border-color:var(--line);">' + photo(IMAGES.headshot, W.portrait, fileLabel(IMAGES.headshot)) + '</div>'
     +     '<div style="margin-top:28px;">' + AGENT_FACTS + '</div>'
@@ -1350,8 +1395,8 @@ var IMAGES = {
   /* One photo slot: gradient + label underneath, real photo on top.
      A missing file makes the <img> delete itself, revealing the
      placeholder — a wrong filename can never break a page. */
-  /* Turns 'images/blog/richwoods.jpg' into 'images/blog/richwoods.jpg' for the
-     on-screen tag, so an empty slot tells you exactly which file to add. */
+  /* Builds the on-screen tag for an empty slot, so the page tells you
+     exactly which file to drop in. */
   function fileLabel(src){ return src ? 'add ' + src : ''; }
 
   function photo(src, wash, label){
@@ -1516,6 +1561,103 @@ var IMAGES = {
     render();
   }
 
+  /* ---- contact forms ----
+     Submits to FormSubmit (formsubmit.co) — a free relay that needs no
+     account and no API key. It forwards each message to CONTACT_EMAIL.
+
+     ONE-TIME SETUP: the very first time someone submits the form,
+     FormSubmit emails CONTACT_EMAIL asking to confirm the address.
+     Click the link in that email once and every message after it
+     arrives normally. Until that click, submissions are held.
+     Send yourself a test message after the site goes live. */
+  function initForms(){
+    document.querySelectorAll('form[data-contact]').forEach(function(form){
+      var status = form.querySelector('.form-status');
+      var btn    = form.querySelector('button[type="submit"]');
+      var mathIn = form.querySelector('[data-math]');
+      var answer = null;
+
+      if (mathIn){
+        var x = 2 + Math.floor(Math.random() * 8);
+        var y = 2 + Math.floor(Math.random() * 8);
+        answer = x + y;
+        mathIn.placeholder = x + ' + ' + y + ' = ?';
+        var lab = form.querySelector('[data-math-label]');
+        if (lab) lab.textContent = 'What is ' + x + ' + ' + y + '?*';
+      }
+
+      function say(msg, kind){
+        status.textContent = msg;
+        status.className = 'form-status' + (kind ? ' is-' + kind : '');
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        var honey = form.querySelector('[name="_honey"]');
+        if (honey && honey.value) return;              // bot
+
+        var blank = null;
+        form.querySelectorAll('input[required], textarea[required]').forEach(function(el){
+          if (!blank && !el.value.trim()) blank = el;
+        });
+        if (blank){
+          say('Please fill in every field marked with *.', 'err');
+          blank.focus();
+          return;
+        }
+
+        var em = form.querySelector('input[type="email"]');
+        if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())){
+          say('That email address does not look right.', 'err');
+          em.focus();
+          return;
+        }
+
+        if (mathIn && parseInt(mathIn.value, 10) !== answer){
+          say('The answer to the security question is not right.', 'err');
+          mathIn.select();
+          return;
+        }
+
+        var data = {};
+        form.querySelectorAll('input, textarea').forEach(function(el){
+          if (el.name && el.name.charAt(0) !== '_') data[el.name] = el.value.trim();
+        });
+        data._subject  = 'Website enquiry from ' + (data['First name'] || '') + ' ' + (data['Last name'] || '');
+        data._template = 'table';
+        data._captcha  = 'false';
+
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        say('', '');
+
+        fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(function(r){ return r.ok; })
+        .then(function(ok){
+          if (ok){
+            form.reset();
+            say('Thanks \u2014 your message is on its way. Ajay will get back to you shortly.', 'ok');
+          } else {
+            say('Sorry, that did not send. Please call or text (469) 996-3104 instead.', 'err');
+          }
+        })
+        .catch(function(){
+          say('Could not reach the mail service \u2014 check your connection, or call or text (469) 996-3104.', 'err');
+        })
+        .then(function(){
+          btn.disabled = false;
+          btn.textContent = label;
+        });
+      });
+    });
+  }
+
   /* ---- about page scroll-spy ---- */
   function initAbout(){
     var links = document.querySelectorAll('[data-toc]');
@@ -1587,6 +1729,7 @@ var IMAGES = {
     initTestimonialsPage();
     initBlogPage();
     initAbout();
+    initForms();
 
     navLinks.querySelectorAll('a[data-route]').forEach(function(a){
       a.classList.toggle('is-current', a.getAttribute('data-route') === route);
