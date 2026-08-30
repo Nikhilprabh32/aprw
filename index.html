@@ -96,10 +96,15 @@
   /* the real photo, laid over its placeholder */
   .ph-img{
     position:absolute; inset:0; z-index:5;
-    width:100%; height:100%; object-fit:cover; display:block;
+    width:100%; height:100%; display:block;
+    object-fit:cover;        /* fills the frame, crops the overflow */
+    object-position:center;  /* which part survives the crop */
   }
+  /* Slideshow photos crop from slightly above centre, which keeps
+     rooflines and horizons in frame instead of slicing them off. */
+  .hero-slide .ph-img{ object-position:center 42%; }
   /* Tag on an empty photo slot, naming the file that belongs there.
-     The real photo covers it once the file is added. */
+     It disappears on its own as soon as the real photo loads. */
   .ph-note{
     position:absolute; z-index:3; left:10px; bottom:10px; right:10px;
     font-size:10px; font-weight:600; letter-spacing:.07em;
@@ -198,12 +203,12 @@
   /* =========================================================
      HOME — hero
      ========================================================= */
-  .hero{ position:relative; height:clamp(520px,78vh,780px); overflow:hidden; background:var(--navy-deep); }
+  .hero{ position:relative; height:clamp(480px,56vw,800px); overflow:hidden; background:var(--navy-deep); }
   .hero-slide{ position:absolute; inset:0; opacity:0; transition:opacity 1.5s ease-in-out; }
   .hero-slide.is-on{ opacity:1; }
-  .hero-slide .ph-wrap{ position:absolute; inset:-6%; animation:drift 12s ease-out both; }
+  .hero-slide .ph-wrap{ position:absolute; inset:0; animation:drift 14s ease-out both; }
   .hero-slide .ph{ position:absolute; inset:0; }
-  @keyframes drift{ from{ transform:scale(1.09); } to{ transform:scale(1); } }
+  @keyframes drift{ from{ transform:scale(1.05); } to{ transform:scale(1); } }
   .hero::after{
     content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
     background:linear-gradient(180deg, rgba(12,27,51,.34) 0%, rgba(12,27,51,.12) 38%, rgba(12,27,51,.52) 100%);
@@ -232,6 +237,9 @@
   .hero-dots button:hover{ background:rgba(255,255,255,.7); }
   .hero-dots button.is-on{ background:#fff; width:52px; }
   @media (max-width:600px){
+    /* Keep the hero wider than it is tall on a phone, or a landscape
+       photo gets cropped down to a narrow vertical sliver. */
+    .hero{ height:clamp(340px,86vw,460px); }
     .hero-ctas{ flex-direction:column; }
     .hbtn{ width:100%; max-width:300px; min-width:0; }
   }
@@ -661,10 +669,10 @@
   <div class="wrap">
 
     <!-- ===== BEAM REAL ESTATE LOGO =====================================
-         Nothing to edit here. Save the logo as  beam-logo.jpg  in the
-         same folder as this file and it appears automatically, on
-         every page. (To use a different filename, change beamLogo in
-         the IMAGES list near the top of the script below.)
+         Nothing to edit here. Save the logo as  images/beam-logo.png
+         and it appears automatically, on every page.
+         (To use a different filename, change beamLogo in the IMAGES
+         list near the top of the script at the bottom of this file.)
     ================================================================== -->
     <div class="beam-band" id="beamBand">
       <div class="beam-slot">
@@ -721,9 +729,9 @@
 
    HOW TO ADD YOUR PICTURES (no coding needed):
 
-     1. Put your photos in the SAME folder as this file.
-        (No subfolders — everything sits next to index.html.)
-     2. Rename each photo to match the names in the list below.
+     1. Make a folder named  images  in the same place as this file.
+     2. Put your photos in that folder.
+     3. Rename each photo to match the names in the list below.
         (Or change the names below to match your files — either works.)
 
    That's it. Save, refresh the page, and your photos appear.
@@ -731,48 +739,73 @@
    SAFE TO EXPERIMENT: if a photo is missing or the name doesn't
    match, that spot just shows a colored placeholder. Nothing breaks.
 
-   TIPS:
+   PHOTO SIZES — this is what makes them look sharp or blurry:
+
+     Slideshow (hero-1.jpg …)  at least 2000 x 1100 pixels
+     Ajay's photo (ajay.jpg)   at least  800 x 1000 pixels (upright)
+     Contact photo             at least 1000 x 1250 pixels (upright)
+     Blog photos               at least  900 x  560 pixels
+     Beam logo                 .png with a transparent background
+
+     A photo SMALLER than these gets stretched to fit and looks
+     blurry. There is no way to fix that in code — the detail isn't
+     in the file. Right-click a photo and check "Get Info" (Mac) or
+     "Properties → Details" (Windows) to see its pixel size.
+
+     Don't save images by right-clicking them on a webpage — those
+     are usually shrunken copies (600px or less) and will look soft.
+     Use the original file from the camera or the photographer.
+
+   SHAPE — why a photo might look cut off:
+
+     The slideshow is a wide letterbox strip, so a tall photo gets
+     its top and bottom trimmed to fit. Use wide (landscape) photos
+     there. Ajay's photo and the contact photo are upright frames,
+     so use upright photos for those.
+
+   OTHER TIPS:
      • Use .jpg for photos. Keep each one under about 1 MB so the
        page loads fast — any "compress jpeg" website will do this.
-     • Wide photos work best for the slideshow (landscape, not tall).
-     • To add a 6th slideshow photo, copy a line and change the number.
+       (Compressing does NOT cause blurriness; being too small does.)
+     • To add a 7th slideshow photo, copy a line and change the number.
        To use fewer, delete a line. Keep the commas between lines.
    ================================================================== */
 var IMAGES = {
 
   // Homepage slideshow, in the order they appear
   hero: [
-    'img1.jpg',
-    'img2.jpg',
-    'img3.jpg',
-    'img4.jpg',
-    'img5.jpg'
+    'images/hero-1.jpg',
+    'images/hero-2.jpg',
+    'images/hero-3.jpg',
+    'images/hero-4.jpg',
+    'images/hero-5.jpg',
+    'images/hero-6.jpg'
   ],
 
-  headshot: 'ajay.jpg',        // Ajay's photo (About, Mortgage, Contact)
-  contact:  'contact.jpg',     // photo beside the homepage contact form
-  beamLogo: 'beam-logo.jpg'    // Beam Real Estate logo in the footer
+  headshot: 'images/ajay.jpg',        // Ajay's photo (About, Mortgage, Contact)
+  contact:  'images/contact.jpg',     // photo beside the homepage contact form
+  beamLogo: 'images/beam-logo.png'    // Beam Real Estate logo in the footer
 
-  // BLOG PHOTOS are listed further down, next to each post. Each post
-  // names its own file, e.g. richwoods.jpg, and that same photo is used
-  // both on the blog card and at the top of the article.
+  // BLOG PHOTOS are listed further down, next to each post — search this
+  // file for  images/blog/  to find them. Each post names its own file,
+  // e.g. images/blog/richwoods.jpg, and that same photo is used both on
+  // the blog card and at the top of the article.
 
 };
 /* ================= end of the part you need to edit ================ */
 
 /* WHERE EVERY PHOTO GOES — the full list
-   All of these live in the same folder as this HTML file.
    ------------------------------------------------------------------
-   hero-1.jpg … hero-5.jpg    homepage slideshow
-   ajay.jpg                   About, Mortgage, Contact pages
-   contact.jpg                beside the homepage contact form
-   beam-logo.jpg              footer, every page
-   <post-name>.jpg            one per blog post (41 of them)
+   images/hero-1.jpg … hero-6.jpg   homepage slideshow
+   images/ajay.jpg                  About, Mortgage, Contact pages
+   images/contact.jpg               beside the homepage contact form
+   images/beam-logo.png             footer, every page
+   images/blog/<name>.jpg           one per blog post (41 of them)
 
    Don't want to hunt for filenames? Open the site in a browser. Every
    empty photo slot shows a small dark tag in its corner with the exact
-   filename it's waiting for — "add richwoods.jpg". The tag is covered
-   the moment you add that file.
+   filename it's waiting for — "add images/blog/richwoods.jpg". The tag
+   vanishes the moment you add that file.
    ------------------------------------------------------------------ */
 
 
@@ -783,6 +816,7 @@ var IMAGES = {
 
   /* =========================================================
      Placeholder washes — stand-ins for real photography.
+     Swap each .ph for an <img> once photo files exist.
      ========================================================= */
   var W = {
     hero: [
@@ -857,7 +891,7 @@ var IMAGES = {
   ];
 
   // "Choose Ajay Prabhu" vs "Choose Me" wording preserved per post, as on the live site.
-  // Each town guide also gets its own image slot: guide-<town>.jpg
+  // Each town guide also gets its own image slot: images/blog/guide-<town>.jpg
   function guide(town, self, meta){
     return {
       t: 'The Ultimate Guide to Buying and Selling Real Estate in ' + town
@@ -865,30 +899,30 @@ var IMAGES = {
        + ' as Your Indian Desi Realtor Real Estate Agent and Loan Officer',
       tag: 'Area Guide',
       m:   meta || (town + ', TX'),
-      img: 'guide-' + town.toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.jpg'
+      img: 'images/blog/guide-' + town.toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.jpg'
     };
   }
   var POSTS = [
-    { t:'5 Home Seller Strategies for Staging Your Home Perfectly', tag:'Selling',   m:'Seller tips', img:'staging-home.jpg' },
-    { t:'5 Tips for Buying a Home',                                 tag:'Buying',    m:'Buyer tips', img:'5-tips-buying.jpg' },
-    { t:'Amenities and Special Features of Richwoods Frisco',       tag:'Community', m:'Frisco, TX', img:'richwoods-amenities.jpg' },
-    { t:'Best Builders in Grove Frisco',                            tag:'Community', m:'Frisco, TX', img:'grove-builders.jpg' },
-    { t:'Cashback Rebate Discount Realtor Dallas',                  tag:'Buying',    m:'Dallas, TX', img:'cashback-rebate.jpg' },
-    { t:'Community Living at Its Best in Lexington, Frisco',        tag:'Community', m:'Frisco, TX', img:'lexington-community.jpg' },
-    { t:'Dealing with Financing',                                   tag:'Mortgage',  m:'Buyer guide', img:'dealing-with-financing.jpg' },
-    { t:'Features and Amenities of The Grove in Frisco',            tag:'Community', m:'Frisco, TX', img:'grove-features.jpg' },
-    { t:'Indian Desi Realtor Dallas',                               tag:'Buying',    m:'Dallas, TX', img:'desi-realtor-dallas.jpg' },
-    { t:'Lexington Country in Frisco',                              tag:'Community', m:'Frisco, TX', img:'lexington-country.jpg' },
-    { t:'Luxury Living with Landon Homes at Lexington in Frisco',   tag:'Community', m:'Frisco, TX', img:'landon-homes.jpg' },
-    { t:'Municipal Utility District (MUD) Taxes and Public Improvement District (PID) Assessments: Pros and Cons', tag:'Mortgage', m:'Buyer guide', img:'mud-pid-taxes.jpg' },
-    { t:'Preparing to Sell',                                        tag:'Selling',   m:'Seller tips', img:'preparing-to-sell.jpg' },
-    { t:'Pros and Cons of Richwoods, Frisco',                       tag:'Community', m:'Frisco, TX', img:'richwoods-pros-cons.jpg' },
-    { t:'Pros and Cons of The Grove, Frisco',                       tag:'Community', m:'Frisco, TX', img:'grove-pros-cons.jpg' },
-    { t:'Relocating to the Big City',                               tag:'Buying',    m:'Buyer guide', img:'relocating.jpg' },
-    { t:'Richwoods Frisco',                                         tag:'Community', m:'Frisco, TX', img:'richwoods.jpg' },
-    { t:'Smart Buyer&rsquo;s Guide to Choosing the Perfect Property', tag:'Buying',  m:'Buyer guide', img:'smart-buyers-guide.jpg' },
-    { t:'The 4 Most Important Questions You Need to Ask Before Selling Your Home', tag:'Selling', m:'Seller tips', img:'4-questions-before-selling.jpg' },
-    { t:'The 5 Biggest Mistakes to Avoid When Buying Your First Home', tag:'Buying', m:'Buyer tips', img:'5-mistakes-first-home.jpg' },
+    { t:'5 Home Seller Strategies for Staging Your Home Perfectly', tag:'Selling',   m:'Seller tips', img:'images/blog/staging-home.jpg' },
+    { t:'5 Tips for Buying a Home',                                 tag:'Buying',    m:'Buyer tips', img:'images/blog/5-tips-buying.jpg' },
+    { t:'Amenities and Special Features of Richwoods Frisco',       tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods-amenities.jpg' },
+    { t:'Best Builders in Grove Frisco',                            tag:'Community', m:'Frisco, TX', img:'images/blog/grove-builders.jpg' },
+    { t:'Cashback Rebate Discount Realtor Dallas',                  tag:'Buying',    m:'Dallas, TX', img:'images/blog/cashback-rebate.jpg' },
+    { t:'Community Living at Its Best in Lexington, Frisco',        tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-community.jpg' },
+    { t:'Dealing with Financing',                                   tag:'Mortgage',  m:'Buyer guide', img:'images/blog/dealing-with-financing.jpg' },
+    { t:'Features and Amenities of The Grove in Frisco',            tag:'Community', m:'Frisco, TX', img:'images/blog/grove-features.jpg' },
+    { t:'Indian Desi Realtor Dallas',                               tag:'Buying',    m:'Dallas, TX', img:'images/blog/desi-realtor-dallas.jpg' },
+    { t:'Lexington Country in Frisco',                              tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-country.jpg' },
+    { t:'Luxury Living with Landon Homes at Lexington in Frisco',   tag:'Community', m:'Frisco, TX', img:'images/blog/landon-homes.jpg' },
+    { t:'Municipal Utility District (MUD) Taxes and Public Improvement District (PID) Assessments: Pros and Cons', tag:'Mortgage', m:'Buyer guide', img:'images/blog/mud-pid-taxes.jpg' },
+    { t:'Preparing to Sell',                                        tag:'Selling',   m:'Seller tips', img:'images/blog/preparing-to-sell.jpg' },
+    { t:'Pros and Cons of Richwoods, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods-pros-cons.jpg' },
+    { t:'Pros and Cons of The Grove, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/grove-pros-cons.jpg' },
+    { t:'Relocating to the Big City',                               tag:'Buying',    m:'Buyer guide', img:'images/blog/relocating.jpg' },
+    { t:'Richwoods Frisco',                                         tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods.jpg' },
+    { t:'Smart Buyer&rsquo;s Guide to Choosing the Perfect Property', tag:'Buying',  m:'Buyer guide', img:'images/blog/smart-buyers-guide.jpg' },
+    { t:'The 4 Most Important Questions You Need to Ask Before Selling Your Home', tag:'Selling', m:'Seller tips', img:'images/blog/4-questions-before-selling.jpg' },
+    { t:'The 5 Biggest Mistakes to Avoid When Buying Your First Home', tag:'Buying', m:'Buyer tips', img:'images/blog/5-mistakes-first-home.jpg' },
     guide('Allen'),
     guide('Anna'),
     guide('Aubrey'),
@@ -907,9 +941,9 @@ var IMAGES = {
     guide('Princeton', true),
     guide('Prosper'),
     guide('Wylie', true),
-    { t:'Toll Brothers in Lexington, Frisco',                       tag:'Community', m:'Frisco, TX', img:'toll-brothers.jpg' },
-    { t:'Top Home Builders in Lexington Frisco',                    tag:'Community', m:'Frisco, TX', img:'lexington-builders.jpg' },
-    { t:'Why Working With a Real Estate Professional is the Best Decision You&rsquo;ll Ever Make', tag:'Buying', m:'Buyer guide', img:'why-work-with-a-pro.jpg' }
+    { t:'Toll Brothers in Lexington, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/toll-brothers.jpg' },
+    { t:'Top Home Builders in Lexington Frisco',                    tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-builders.jpg' },
+    { t:'Why Working With a Real Estate Professional is the Best Decision You&rsquo;ll Ever Make', tag:'Buying', m:'Buyer guide', img:'images/blog/why-work-with-a-pro.jpg' }
   ];
 
   // stable slugs / ids for the detail routes
@@ -1147,6 +1181,7 @@ var IMAGES = {
     +     '<div class="agent-actions"><a href="#/contact" class="btn btn-solid">Contact Ajay</a>'
     +     '<a href="#/testimonials" class="btn btn-outline">Read reviews</a></div></div>'
     +   '</div>'
+    // Lead-in: sits under the photo + bio and hands off to the strategy list below.
     +   '<p class="leadin">Anyone can show or list houses and help you buy or sell. But not many can combine '
     +   'data analytics, market knowledge and property research the way I can to help you find that perfect '
     +   'house in the right neighborhood at the best price. If you are looking to sell, I will help you sell '
@@ -1316,12 +1351,21 @@ var IMAGES = {
   /* One photo slot: gradient + label underneath, real photo on top.
      A missing file makes the <img> delete itself, revealing the
      placeholder — a wrong filename can never break a page. */
+  /* Turns 'images/blog/richwoods.jpg' into 'images/blog/richwoods.jpg' for the
+     on-screen tag, so an empty slot tells you exactly which file to add. */
   function fileLabel(src){ return src ? 'add ' + src : ''; }
 
   function photo(src, wash, label){
     return '<div class="ph" style="background-image:' + wash + '"></div>'
          + '<div class="ph-note">' + label + '</div>'
          + (src ? '<img class="ph-img" src="' + src + '" alt="" onerror="this.remove()">' : '');
+  }
+
+  function paintPlaceholders(root){
+    root.querySelectorAll('[data-ph]').forEach(function(el){
+      var k = el.getAttribute('data-ph');
+      if (W[k]) el.style.backgroundImage = W[k];
+    });
   }
 
   /* ---- hero carousel ---- */
@@ -1362,8 +1406,8 @@ var IMAGES = {
       inner.style.animation = 'none'; void inner.offsetWidth; inner.style.animation = '';
     }
     function restart(){
-      clearInterval(timer);
       if (reduce) return;
+      clearInterval(timer);
       timer = setInterval(function(){ show((at+1) % slides.length); }, 6500);
     }
     restart();
@@ -1380,10 +1424,9 @@ var IMAGES = {
     track.innerHTML = pick.map(reviewCard).join('') + pick.map(reviewCard).join('');
 
     var x = 0, halfW = 0, dragging = false, downX = 0, downOff = 0, moved = 0, raf = null;
-    var alive = true;
     var SPEED = 32;
 
-    function measure(){ if (alive) halfW = track.scrollWidth / 2; }
+    function measure(){ halfW = track.scrollWidth / 2; }
     measure();
     window.addEventListener('resize', measure);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
@@ -1429,7 +1472,6 @@ var IMAGES = {
     vp.addEventListener('click', guard, true);
 
     onCleanup(function(){
-      alive = false;
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', measure);
     });
@@ -1540,6 +1582,7 @@ var IMAGES = {
     view.innerHTML = res.html;
     view.style.animation = 'none'; void view.offsetWidth; view.style.animation = '';
 
+    paintPlaceholders(view);
     initHero();
     initMarquee();
     initTestimonialsPage();
