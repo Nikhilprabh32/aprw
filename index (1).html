@@ -1,0 +1,1605 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ajay Prabhu — Realtor with Beam Real Estate and licensed loan officer, serving Frisco, Plano, McKinney and the DFW Metroplex.">
+<title>AjayPrabhu.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html{ color-scheme:light; }
+  [hidden]{ display:none !important; }
+</style>
+<style>
+  /* =========================================================
+     AjayPrabhu.com — full site
+     Navy refined: one navy family, cool neutrals, no accent hue.
+     Committed single visual world; every color set explicitly.
+     ========================================================= */
+  :root{
+    --navy:      #14294C;
+    --navy-deep: #0C1B33;
+    --navy-mid:  #1D3A66;
+    --navy-line: rgba(255,255,255,.13);
+    --navy-tint: #E8EDF5;
+
+    --ink:       #14294C;
+    --body-text: #5A6880;
+    --muted:     #8A96AC;
+
+    --paper:     #FFFFFF;
+    --mist:      #F5F7FA;
+    --line:      #E3E8F0;
+    --line-soft: #EDF1F6;
+
+    --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --wrap: 1200px;
+    --r: 4px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  h1,h2,h3,h4{ margin:0; font-weight:600; text-wrap:balance; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+  ::selection{ background:var(--navy); color:#fff; }
+  :focus-visible{ outline:2px solid var(--navy-mid); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 40px; }
+  @media (max-width:700px){ .wrap{ padding:0 22px; } }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+
+  .sec-title{
+    font-size:clamp(23px,2.6vw,30px); font-weight:600;
+    letter-spacing:.045em; text-transform:uppercase; line-height:1.25;
+  }
+  .eyebrow{
+    font-size:12.5px; font-weight:600; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding:14px 30px; font-size:13.5px; font-weight:600;
+    letter-spacing:.09em; text-transform:uppercase;
+    border-radius:var(--r); border:1.5px solid transparent;
+    transition:background .2s, color .2s, border-color .2s, transform .2s;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn svg{ width:16px; height:16px; flex:none; }
+  .btn{ white-space:nowrap; }
+  .btn-solid{ background:var(--navy); color:#fff; }
+  .btn-solid:hover{ background:var(--navy-deep); }
+  .btn-outline{ border-color:var(--line); color:var(--ink); background:transparent; }
+  .btn-outline:hover{ border-color:var(--navy); background:var(--mist); }
+  .btn-light{ background:#fff; color:var(--navy); }
+  .btn-light:hover{ background:var(--navy-tint); }
+  .btn-ghost-light{ border-color:rgba(255,255,255,.45); color:#fff; background:transparent; }
+  .btn-ghost-light:hover{ background:#fff; color:var(--navy); border-color:#fff; }
+
+  /* ---------- image placeholders ---------- */
+  .ph{ background-size:cover; background-position:center; }
+  /* the real photo, laid over its placeholder */
+  .ph-img{
+    position:absolute; inset:0; z-index:5;
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  /* Tag on an empty photo slot, naming the file that belongs there.
+     It disappears on its own as soon as the real photo loads. */
+  .ph-note{
+    position:absolute; z-index:3; left:10px; bottom:10px; right:10px;
+    font-size:10px; font-weight:600; letter-spacing:.07em;
+    color:#fff; background:rgba(12,27,51,.72);
+    padding:5px 9px; border-radius:3px; backdrop-filter:blur(4px);
+    pointer-events:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+
+  /* =========================================================
+     Utility bar + nav
+     ========================================================= */
+  .utility{ background:var(--navy-deep); color:rgba(255,255,255,.66); font-size:13px; }
+  .utility .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    min-height:44px; gap:16px; flex-wrap:wrap;
+  }
+  .u-auth{ display:flex; align-items:center; gap:8px; }
+  .u-auth a{ padding:6px 15px; border-radius:100px; border:1px solid transparent; transition:background .18s,color .18s,border-color .18s; }
+  .u-auth a:hover{ color:#fff; background:rgba(255,255,255,.09); }
+  .u-auth a.signup{ border-color:rgba(255,255,255,.32); color:rgba(255,255,255,.9); }
+  .u-auth a.signup:hover{ background:#fff; color:var(--navy-deep); border-color:#fff; }
+  .u-contact{ display:flex; align-items:center; gap:22px; }
+  .u-contact a{ display:inline-flex; align-items:center; gap:8px; transition:color .18s; }
+  .u-contact a:hover{ color:#fff; }
+  .u-contact svg{ width:13px; height:13px; flex:none; opacity:.75; }
+  @media (max-width:700px){
+    .utility .wrap{ justify-content:center; padding:10px 0; }
+    .u-contact{ gap:14px; font-size:12px; }
+  }
+
+  .nav{ background:var(--navy); position:sticky; top:0; z-index:50; transition:box-shadow .25s; }
+  .nav.is-stuck{ box-shadow:0 2px 24px rgba(12,27,51,.28); }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; min-height:92px; gap:24px; }
+  .logo{
+    display:inline-block; border:1.5px solid rgba(255,255,255,.9);
+    padding:13px 22px; color:#fff; font-weight:600; font-size:16px;
+    letter-spacing:.19em; white-space:nowrap; transition:background .2s,color .2s;
+  }
+  .logo:hover{ background:#fff; color:var(--navy); }
+  .navlinks{ display:flex; align-items:center; gap:4px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    display:block; padding:10px 17px; font-size:14.5px; font-weight:500;
+    color:rgba(255,255,255,.78); border-radius:var(--r);
+    transition:color .18s, background .18s;
+  }
+  .navlinks a:hover{ color:#fff; background:rgba(255,255,255,.08); }
+  .navlinks a.is-current{ color:#fff; background:rgba(255,255,255,.13); }
+  .nav-toggle{ display:none; background:none; border:none; padding:8px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:#fff; margin:4px 0; transition:transform .25s, opacity .25s; }
+  .nav-toggle.is-open span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2){ opacity:0; }
+  .nav-toggle.is-open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+  @media (max-width:900px){
+    .nav .wrap{ min-height:74px; position:relative; }
+    .navlinks{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:stretch; gap:0;
+      background:var(--navy); padding:8px 24px 20px; border-top:1px solid var(--navy-line);
+      box-shadow:0 18px 30px rgba(12,27,51,.3);
+    }
+    .navlinks.is-open{ display:flex; }
+    .navlinks a{ padding:13px 12px; }
+    .nav-toggle{ display:block; }
+    .logo{ font-size:13px; padding:10px 15px; letter-spacing:.15em; }
+  }
+
+  /* =========================================================
+     Page transition + interior page banner
+     ========================================================= */
+  #view{ animation:fadeUp .45s ease both; }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+  /* Interior pages open straight into content on a light ground —
+     no navy banner between the nav and the information. */
+  .pagetop{ padding:56px 0 8px; }
+  .pagetop h1{
+    font-size:clamp(30px,4vw,42px); letter-spacing:.035em;
+    text-transform:uppercase; line-height:1.15; color:var(--ink);
+    margin-top:12px;
+  }
+  .pagetop .lede{
+    margin-top:18px; color:var(--body-text);
+    font-size:16.5px; max-width:64ch; line-height:1.75;
+  }
+  .pagetop .rule{ width:52px; height:3px; background:var(--navy); border-radius:2px; margin-top:26px; }
+
+  .section{ padding:88px 0; }
+  .section.tight{ padding-top:44px; }
+  .section.mist{ background:var(--mist); }
+  @media (max-width:700px){
+    .section{ padding:60px 0; }
+    .section.tight{ padding-top:32px; }
+    .pagetop{ padding:38px 0 4px; }
+  }
+
+  /* =========================================================
+     HOME — hero
+     ========================================================= */
+  .hero{ position:relative; height:clamp(520px,78vh,780px); overflow:hidden; background:var(--navy-deep); }
+  .hero-slide{ position:absolute; inset:0; opacity:0; transition:opacity 1.5s ease-in-out; }
+  .hero-slide.is-on{ opacity:1; }
+  .hero-slide .ph-wrap{ position:absolute; inset:-6%; animation:drift 12s ease-out both; }
+  .hero-slide .ph{ position:absolute; inset:0; }
+  @keyframes drift{ from{ transform:scale(1.09); } to{ transform:scale(1); } }
+  .hero::after{
+    content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:linear-gradient(180deg, rgba(12,27,51,.34) 0%, rgba(12,27,51,.12) 38%, rgba(12,27,51,.52) 100%);
+  }
+  .hero-ctas{
+    position:absolute; z-index:3; inset:0;
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    flex-wrap:wrap; padding:0 22px;
+  }
+  .hbtn{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:210px; padding:19px 34px; font-size:15px; font-weight:600;
+    letter-spacing:.02em; border-radius:var(--r); border:1.5px solid transparent;
+    backdrop-filter:blur(6px);
+    transition:transform .2s, background .2s, border-color .2s, box-shadow .2s, color .2s;
+  }
+  .hbtn-buy{ background:var(--navy); color:#fff; box-shadow:0 8px 30px rgba(12,27,51,.4); }
+  .hbtn-buy:hover{ background:var(--navy-deep); transform:translateY(-3px); box-shadow:0 14px 38px rgba(12,27,51,.5); }
+  .hbtn-sell{ background:rgba(255,255,255,.14); color:#fff; border-color:rgba(255,255,255,.62); }
+  .hbtn-sell:hover{ background:#fff; color:var(--navy); border-color:#fff; transform:translateY(-3px); }
+  .hero-dots{ position:absolute; z-index:4; left:0; right:0; bottom:30px; display:flex; justify-content:center; gap:10px; }
+  .hero-dots button{
+    width:32px; height:3px; padding:0; border:none; border-radius:2px;
+    background:rgba(255,255,255,.38); transition:background .25s, width .25s;
+  }
+  .hero-dots button:hover{ background:rgba(255,255,255,.7); }
+  .hero-dots button.is-on{ background:#fff; width:52px; }
+  @media (max-width:600px){
+    .hero-ctas{ flex-direction:column; }
+    .hbtn{ width:100%; max-width:300px; min-width:0; }
+  }
+
+  /* ---------- agent card ---------- */
+  .agent-sec{ position:relative; background:var(--mist); padding:92px 0; overflow:hidden; }
+  .agent-sec .map{ position:absolute; inset:0; z-index:0; opacity:.5; pointer-events:none; }
+  .agent-sec .wrap{ position:relative; z-index:1; }
+  .agent-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    box-shadow:0 24px 60px -28px rgba(20,41,76,.3);
+    display:grid; grid-template-columns:300px 1fr;
+    max-width:1000px; margin:0 auto; overflow:hidden;
+  }
+  .agent-photo{ position:relative; background:var(--navy-tint); }
+  .agent-photo .ph{ position:absolute; inset:0; }
+  .agent-copy{ padding:46px 48px; }
+  .agent-copy .rule{ width:52px; height:3px; background:var(--navy); margin:20px 0 24px; border-radius:2px; }
+  .agent-facts{
+    display:flex; flex-direction:column; gap:11px;
+    padding-bottom:24px; margin-bottom:24px; border-bottom:1px solid var(--line);
+    font-size:14.5px; color:var(--body-text);
+  }
+  .agent-facts .row{ display:flex; align-items:center; gap:11px; }
+  .agent-facts svg{ width:15px; height:15px; flex:none; color:var(--muted); }
+  .agent-facts strong{ color:var(--ink); font-weight:600; }
+  .agent-facts .lic{ color:var(--muted); }
+  .agent-facts a:hover{ color:var(--navy); text-decoration:underline; }
+  .bio{ font-size:15px; line-height:1.75; color:var(--body-text); max-width:62ch; }
+  .agent-actions{ display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; }
+  @media (max-width:820px){
+    .agent-card{ grid-template-columns:1fr; }
+    .agent-photo{ height:300px; }
+    .agent-copy{ padding:34px 28px; }
+    .agent-sec{ padding:64px 0; }
+  }
+
+  /* =========================================================
+     Testimonial carousel (home) + grid (testimonials page)
+     ========================================================= */
+  .tst-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:14px; }
+  .tst-hint{ display:flex; align-items:center; gap:9px; font-size:13px; color:var(--muted); }
+  .tst-hint svg{ width:15px; height:15px; }
+  .tst-viewport{
+    margin-top:38px; overflow:hidden; cursor:grab; padding:4px 0 8px;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 90px,#000 calc(100% - 90px),transparent 100%);
+            mask-image:linear-gradient(90deg,transparent 0,#000 90px,#000 calc(100% - 90px),transparent 100%);
+  }
+  .tst-viewport.is-grab{ cursor:grabbing; }
+  .tst-track{ display:flex; gap:22px; width:max-content; will-change:transform; }
+  .tst-card{
+    width:352px; flex:none; background:var(--paper);
+    border:1px solid var(--line); border-radius:6px;
+    padding:30px 30px 26px; display:flex; flex-direction:column;
+    user-select:none; transition:border-color .25s, box-shadow .25s, transform .25s;
+  }
+  .tst-card:hover{ border-color:#C9D3E2; box-shadow:0 16px 40px -22px rgba(20,41,76,.4); transform:translateY(-3px); }
+  .tst-stars{ display:flex; gap:3px; margin-bottom:16px; }
+  .tst-stars svg{ width:15px; height:15px; color:var(--navy); }
+  .tst-stars svg.off{ color:#D3DAE6; }
+  .tst-quote{ font-size:16px; line-height:1.6; color:var(--ink); font-weight:500; flex:1; }
+  .tst-who{ margin-top:22px; padding-top:18px; border-top:1px solid var(--line); display:flex; align-items:center; gap:13px; }
+  .tst-av{
+    width:38px; height:38px; flex:none; border-radius:50%;
+    background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:13.5px; font-weight:600;
+  }
+  .tst-who .n{ font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.35; }
+  .tst-who .c{ font-size:13px; color:var(--muted); line-height:1.35; }
+  .tst-foot{ display:flex; justify-content:center; margin-top:44px; }
+  @media (max-width:700px){
+    .tst-card{ width:280px; padding:26px 24px 22px; }
+    .tst-viewport{ -webkit-mask-image:none; mask-image:none; }
+  }
+
+  .tst-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .tst-grid .tst-card{ width:auto; }
+  @media (max-width:940px){ .tst-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px){ .tst-grid{ grid-template-columns:1fr; } }
+
+  .rating-summary{
+    display:flex; align-items:center; gap:28px; flex-wrap:wrap;
+    padding:26px 30px; margin-bottom:44px;
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+  }
+  .rating-summary .big{
+    font-size:44px; font-weight:600; color:var(--ink);
+    line-height:1; font-variant-numeric:tabular-nums;
+  }
+  .rating-summary .stars svg{ width:18px; height:18px; color:var(--navy); }
+  .rating-summary .stars{ display:flex; gap:3px; margin-bottom:6px; }
+  .rating-summary .cap{ font-size:13.5px; color:var(--muted); }
+  .rating-summary .divider{ width:1px; align-self:stretch; background:var(--line); }
+
+  /* =========================================================
+     Contact form
+     ========================================================= */
+  .contact-band{ background:var(--navy); color:#fff; padding:96px 0; }
+  .contact-band .head{ text-align:center; max-width:620px; margin:0 auto 52px; }
+  .contact-band .head .sec-title{ color:#fff; }
+  .contact-band .head p{ margin-top:16px; color:rgba(255,255,255,.7); font-size:15.5px; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+  .field{ margin-bottom:22px; }
+  .field label{
+    display:block; margin-bottom:9px; font-size:12.5px; font-weight:600;
+    letter-spacing:.09em; text-transform:uppercase;
+  }
+  .field input, .field textarea{
+    width:100%; border-radius:var(--r); padding:14px 16px;
+    font-family:inherit; font-size:15px;
+    transition:border-color .2s, background .2s, box-shadow .2s;
+  }
+  .field textarea{ resize:vertical; min-height:126px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  /* on navy */
+  .on-navy .field label{ color:rgba(255,255,255,.72); }
+  .on-navy .field input, .on-navy .field textarea{
+    background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.2); color:#fff;
+  }
+  .on-navy .field input::placeholder, .on-navy .field textarea::placeholder{ color:rgba(255,255,255,.35); }
+  .on-navy .field input:focus, .on-navy .field textarea:focus{
+    outline:none; border-color:#fff; background:rgba(255,255,255,.12);
+  }
+  /* on light */
+  .on-light .field label{ color:var(--ink); }
+  .on-light .field input, .on-light .field textarea{
+    background:var(--paper); border:1.5px solid var(--line); color:var(--ink);
+  }
+  .on-light .field input::placeholder, .on-light .field textarea::placeholder{ color:var(--muted); }
+  .on-light .field input:focus, .on-light .field textarea:focus{
+    outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(20,41,76,.09);
+  }
+  .contact-photo{
+    position:relative; border-radius:6px; overflow:hidden;
+    aspect-ratio:4/5; max-height:520px; border:1px solid rgba(255,255,255,.16);
+  }
+  .contact-photo .ph{ position:absolute; inset:0; }
+  .form-note{ font-size:13px; color:var(--muted); margin-top:14px; }
+  .on-navy .form-note{ color:rgba(255,255,255,.5); }
+  @media (max-width:880px){
+    .contact-band{ padding:64px 0; }
+    .contact-grid{ grid-template-columns:1fr; gap:36px; }
+    .contact-photo{ aspect-ratio:16/10; }
+    .field-row{ grid-template-columns:1fr; gap:0; }
+  }
+
+  /* =========================================================
+     Blog
+     ========================================================= */
+  .posts{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .post{
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:box-shadow .25s, transform .25s, border-color .25s;
+  }
+  .post:hover{ transform:translateY(-4px); border-color:#C9D3E2; box-shadow:0 20px 46px -24px rgba(20,41,76,.42); }
+  .post-img{ position:relative; aspect-ratio:16/10; background:var(--navy-tint); overflow:hidden; }
+  .post-img .ph{ position:absolute; inset:0; transition:transform .5s ease; }
+  .post:hover .post-img .ph{ transform:scale(1.05); }
+  .post-tag{
+    position:absolute; z-index:2; top:14px; left:14px;
+    background:rgba(12,27,51,.86); color:#fff; padding:5px 12px; border-radius:100px;
+    font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .post-body{ padding:24px 24px 26px; display:flex; flex-direction:column; flex:1; }
+  .post-body h3{
+    font-size:17px; line-height:1.45; color:var(--ink);
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .post-meta{ margin-top:12px; font-size:13px; color:var(--muted); }
+  .post-more{
+    margin-top:auto; padding-top:18px; border-top:1px solid var(--line);
+    display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--navy);
+  }
+  .post-more svg{ width:15px; height:15px; transition:transform .25s; }
+  .post:hover .post-more svg{ transform:translateX(5px); }
+  .blog-foot{ display:flex; justify-content:center; margin-top:52px; }
+  @media (max-width:900px){ .posts{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px){ .posts{ grid-template-columns:1fr; } }
+
+  .searchbar{ position:relative; max-width:440px; margin-bottom:44px; }
+  .searchbar input{
+    width:100%; padding:15px 16px 15px 46px;
+    border:1.5px solid var(--line); border-radius:var(--r);
+    background:var(--paper); font-family:inherit; font-size:15px; color:var(--ink);
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .searchbar input:focus{ outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(20,41,76,.09); }
+  .searchbar svg{
+    position:absolute; left:16px; top:50%; transform:translateY(-50%);
+    width:17px; height:17px; color:var(--muted); pointer-events:none;
+  }
+  .empty{ padding:60px 0; text-align:center; color:var(--muted); font-size:15px; }
+
+  /* =========================================================
+     Mortgage page
+     ========================================================= */
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .split .visual{
+    position:relative; border-radius:6px; overflow:hidden;
+    aspect-ratio:4/5; max-height:540px; background:var(--navy-tint);
+  }
+  .split .visual .ph{ position:absolute; inset:0; }
+  .split h2{ font-size:clamp(22px,2.4vw,28px); letter-spacing:.04em; text-transform:uppercase; line-height:1.3; }
+  .split .rule{ width:52px; height:3px; background:var(--navy); margin:20px 0 24px; border-radius:2px; }
+  .split p + p{ margin-top:16px; }
+  @media (max-width:880px){ .split{ grid-template-columns:1fr; gap:36px; } .split .visual{ aspect-ratio:16/10; } }
+
+  .cards3{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .icard{
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    padding:32px 30px; transition:border-color .25s, box-shadow .25s, transform .25s;
+  }
+  .icard:hover{ border-color:#C9D3E2; box-shadow:0 18px 40px -24px rgba(20,41,76,.35); transform:translateY(-3px); }
+  .icard .ic{
+    width:46px; height:46px; border-radius:6px; background:var(--navy-tint);
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+  }
+  .icard .ic svg{ width:22px; height:22px; color:var(--navy); }
+  .icard h3{ font-size:17px; letter-spacing:.03em; text-transform:uppercase; }
+  .icard p{ margin-top:12px; font-size:14.5px; line-height:1.7; color:var(--body-text); }
+  @media (max-width:880px){ .cards3{ grid-template-columns:1fr; } }
+
+  /* ---------- detail pages (article / single review) ---------- */
+  .crumb{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:22px; transition:color .18s;
+  }
+  .crumb:hover{ color:var(--navy); }
+  .crumb svg{ width:15px; height:15px; }
+  .article{ max-width:760px; }
+  .article .kicker{
+    display:inline-block; background:var(--navy); color:#fff;
+    padding:5px 13px; border-radius:100px;
+    font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .article h1{
+    font-size:clamp(26px,3.4vw,38px); line-height:1.22; color:var(--ink);
+    margin-top:18px; letter-spacing:-.005em; text-transform:none;
+  }
+  .article .byline{
+    margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
+    display:flex; align-items:center; gap:13px; font-size:14px; color:var(--muted);
+  }
+  .article .byline .tst-av{ width:36px; height:36px; }
+  .article .byline strong{ color:var(--ink); font-weight:600; }
+  .article-hero{
+    position:relative; aspect-ratio:16/9; border-radius:6px; overflow:hidden;
+    margin:36px 0; background:var(--navy-tint); max-width:900px;
+  }
+  .article-hero .ph{ position:absolute; inset:0; }
+  .draft{
+    border:1.5px dashed var(--line); border-radius:6px;
+    padding:38px 34px; background:var(--mist);
+  }
+  .draft .tag{
+    font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  .draft p{ margin-top:14px; color:var(--body-text); font-size:15px; line-height:1.75; max-width:62ch; }
+  .draft .skeleton{ margin-top:26px; display:flex; flex-direction:column; gap:11px; }
+  .draft .skeleton i{ display:block; height:11px; border-radius:3px; background:#E7EBF2; }
+  .draft .skeleton i:nth-child(3){ width:88%; }
+  .draft .skeleton i:nth-child(6){ width:64%; }
+
+  .quote-big{
+    font-size:clamp(21px,2.6vw,30px); line-height:1.45; font-weight:500;
+    text-transform:none; margin:0;
+    color:var(--ink); max-width:22ch; letter-spacing:-.005em;
+  }
+  .review-panel{
+    background:var(--mist); border:1px solid var(--line); border-radius:6px;
+    padding:40px 42px; max-width:760px;
+  }
+  .review-panel .full{ margin-top:24px; font-size:16px; line-height:1.8; color:var(--body-text); max-width:64ch; }
+  .review-panel .meta{
+    margin-top:28px; padding-top:22px; border-top:1px solid var(--line);
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .review-panel .meta .who-n{ font-size:15.5px; font-weight:600; color:var(--ink); }
+  .review-panel .meta .who-c{ font-size:13.5px; color:var(--muted); }
+  @media (max-width:700px){ .review-panel{ padding:28px 24px; } .draft{ padding:26px 22px; } }
+
+  /* ---------- Beam logo slot (drop the real image in here) ---------- */
+  .beam-slot{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:8px; width:190px; height:74px;
+    border:1.5px dashed rgba(255,255,255,.32); border-radius:4px;
+    background:rgba(255,255,255,.05);
+    font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+    color:rgba(255,255,255,.5); text-align:center; padding:8px;
+  }
+  .beam-slot img{ max-width:100%; max-height:100%; }
+  .beam-band{
+    display:flex; justify-content:center;
+    padding:44px 0; border-bottom:1px solid var(--navy-line);
+  }
+
+  /* closing call-to-action band */
+  .cta{
+    background:var(--navy); color:#fff; border-radius:6px;
+    padding:52px 56px; display:flex; align-items:center;
+    justify-content:space-between; gap:32px; flex-wrap:wrap;
+  }
+  .cta h2{ font-size:clamp(21px,2.3vw,27px); letter-spacing:.04em; text-transform:uppercase; max-width:20ch; line-height:1.3; }
+  .cta p{ margin-top:12px; color:rgba(255,255,255,.7); font-size:15px; max-width:46ch; }
+  .cta-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  @media (max-width:700px){ .cta{ padding:36px 28px; } }
+
+  /* =========================================================
+     About page
+     ========================================================= */
+  .about-layout{ display:grid; grid-template-columns:230px 1fr; gap:64px; align-items:start; }
+  .toc{ position:sticky; top:112px; }
+  .toc h4{ font-size:12px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+  .toc a{
+    display:block; padding:9px 0 9px 16px; font-size:14.5px; color:var(--body-text);
+    border-left:2px solid var(--line); transition:color .2s, border-color .2s;
+  }
+  .toc a:hover{ color:var(--ink); border-color:var(--muted); }
+  .toc a.is-on{ color:var(--navy); font-weight:600; border-color:var(--navy); }
+  .leadin{
+    margin-top:56px; padding-left:26px;
+    border-left:3px solid var(--navy);
+    font-size:clamp(16.5px,1.9vw,19px); line-height:1.7;
+    color:var(--ink); max-width:74ch;
+  }
+  .leadin strong{ font-weight:600; }
+  @media (max-width:880px){ .leadin{ margin-top:38px; padding-left:18px; } }
+
+  .prose h3{
+    font-size:19px; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink); margin-bottom:14px;
+  }
+  .prose > section{ padding-bottom:44px; margin-bottom:44px; border-bottom:1px solid var(--line); scroll-margin-top:120px; }
+  .prose > section:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .prose p{ font-size:15.5px; line-height:1.8; color:var(--body-text); max-width:68ch; }
+  .prose p + p{ margin-top:16px; }
+  .creds{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .creds li{ display:flex; gap:13px; align-items:flex-start; font-size:15px; color:var(--body-text); }
+  .creds svg{ width:17px; height:17px; flex:none; color:var(--navy); margin-top:3px; }
+  .areas{ display:flex; flex-wrap:wrap; gap:9px; margin-top:6px; }
+  .areas span{
+    padding:8px 15px; border:1px solid var(--line); border-radius:100px;
+    font-size:13.5px; color:var(--body-text); background:var(--paper);
+    transition:border-color .2s, color .2s, background .2s;
+  }
+  .areas span:hover{ border-color:var(--navy); color:var(--navy); background:var(--mist); }
+  @media (max-width:880px){
+    .about-layout{ grid-template-columns:1fr; gap:36px; }
+    .toc{ position:static; }
+    .toc .toc-links{ display:flex; flex-wrap:wrap; gap:8px; }
+    .toc a{ border-left:none; border:1px solid var(--line); border-radius:100px; padding:8px 15px; }
+    .toc a.is-on{ border-color:var(--navy); }
+  }
+
+  /* =========================================================
+     Footer
+     ========================================================= */
+  footer{ background:var(--navy-deep); color:rgba(255,255,255,.62); padding:72px 0 0; font-size:14.5px; }
+  .foot-grid{ display:grid; grid-template-columns:1.5fr 1fr 1.4fr; gap:52px; padding:52px 0; }
+  .foot-brand{
+    display:inline-block; border:1.5px solid rgba(255,255,255,.5); padding:11px 18px;
+    color:#fff; font-weight:600; font-size:13px; letter-spacing:.17em; margin-bottom:22px;
+  }
+  footer h4{ font-size:12.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:#fff; margin-bottom:18px; }
+  footer address{ font-style:normal; line-height:1.85; }
+  footer address a:hover{ color:#fff; }
+  .foot-links{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .foot-links a:hover, .foot-legal a:hover{ color:#fff; }
+  .foot-legal{ display:flex; flex-direction:column; gap:11px; }
+  .foot-legal a{ font-size:13px; }
+  .foot-ada{ margin-top:18px; font-size:12.5px; line-height:1.7; color:rgba(255,255,255,.45); }
+  .foot-ada a{ text-decoration:underline; }
+  .foot-bottom{
+    border-top:1px solid var(--navy-line); padding:22px 0 28px;
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    font-size:13px; color:rgba(255,255,255,.45);
+  }
+  @media (max-width:860px){ footer{ padding-top:52px; } .foot-grid{ grid-template-columns:1fr; gap:36px; } }
+</style>
+</head>
+<body>
+<div class="utility">
+  <div class="wrap">
+    <div class="u-auth">
+      <a href="#/contact">Sign In</a>
+      <a href="#/contact" class="signup">Sign Up</a>
+    </div>
+    <div class="u-contact">
+      <a href="tel:4699963104">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        469-996-3104
+      </a>
+      <a href="mailto:ajaybprabhu@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        ajaybprabhu@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#/" class="logo">AJAYPRABHU.COM</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#/" data-route="/">Home</a></li>
+      <li><a href="#/mortgage" data-route="/mortgage">Mortgage</a></li>
+      <li><a href="#/about" data-route="/about">About</a></li>
+      <li><a href="#/testimonials" data-route="/testimonials">Testimonials</a></li>
+      <li><a href="#/blog" data-route="/blog">Blog</a></li>
+      <li><a href="#/contact" data-route="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="view"></main>
+
+<footer>
+  <div class="wrap">
+
+    <!-- ===== BEAM REAL ESTATE LOGO =====================================
+         Nothing to edit here. Save the logo as  images/beam-logo.png
+         and it appears automatically, on every page.
+         (To use a different filename, change beamLogo in the IMAGES
+         list near the top of the script at the bottom of this file.)
+    ================================================================== -->
+    <div class="beam-band" id="beamBand">
+      <div class="beam-slot">
+        Beam Real&nbsp;Estate<br>logo goes here
+      </div>
+    </div>
+
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">AJAYPRABHU.COM</div>
+        <h4>Office</h4>
+        <address>
+          Ajay Prabhu &middot; Beam Real Estate<br>
+          14455 Webb Chapel Rd<br>
+          Farmers Branch, TX 75234<br>
+          <a href="tel:4699963104">469-996-3104</a><br>
+          <a href="mailto:ajaybprabhu@gmail.com">ajaybprabhu@gmail.com</a>
+        </address>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="foot-links">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/mortgage">Mortgage</a></li>
+          <li><a href="#/about">About</a></li>
+          <li><a href="#/testimonials">Testimonials</a></li>
+          <li><a href="#/blog">Blog</a></li>
+          <li><a href="#/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Consumer Protection &amp; Privacy</h4>
+        <div class="foot-legal">
+          <a href="#/">TREC Information About Brokerage Services</a>
+          <a href="#/">TREC Consumer Protection Notice</a>
+          <a href="#/">Accessibility</a>
+          <a href="#/">DMCA Compliance</a>
+        </div>
+        <p class="foot-ada">For ADA assistance, please email <a href="mailto:ajaybprabhu@gmail.com">ajaybprabhu@gmail.com</a>. If you experience difficulty in accessing any part of this website, email us, and we will work with you to provide the information.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 All rights reserved</span>
+      <span>Beam Real Estate LLC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==================================================================
+   ┌────────────────────────────────────────────────────────────┐
+   │  YOUR PHOTOS — this is the only part you need to touch.     │
+   └────────────────────────────────────────────────────────────┘
+
+   HOW TO ADD YOUR PICTURES (no coding needed):
+
+     1. Make a folder named  images  in the same place as this file.
+     2. Put your photos in that folder.
+     3. Rename each photo to match the names in the list below.
+        (Or change the names below to match your files — either works.)
+
+   That's it. Save, refresh the page, and your photos appear.
+
+   SAFE TO EXPERIMENT: if a photo is missing or the name doesn't
+   match, that spot just shows a colored placeholder. Nothing breaks.
+
+   TIPS:
+     • Use .jpg for photos. Keep each one under about 1 MB so the
+       page loads fast — any "compress jpeg" website will do this.
+     • Wide photos work best for the slideshow (landscape, not tall).
+     • To add a 7th slideshow photo, copy a line and change the number.
+       To use fewer, delete a line. Keep the commas between lines.
+   ================================================================== */
+var IMAGES = {
+
+  // Homepage slideshow, in the order they appear
+  hero: [
+    'images/hero-1.jpg',
+    'images/hero-2.jpg',
+    'images/hero-3.jpg',
+    'images/hero-4.jpg',
+    'images/hero-5.jpg',
+    'images/hero-6.jpg'
+  ],
+
+  headshot: 'images/ajay.jpg',        // Ajay's photo (About, Mortgage, Contact)
+  contact:  'images/contact.jpg',     // photo beside the homepage contact form
+  beamLogo: 'images/beam-logo.png'    // Beam Real Estate logo in the footer
+
+  // BLOG PHOTOS are listed further down, next to each post — search this
+  // file for  images/blog/  to find them. Each post names its own file,
+  // e.g. images/blog/richwoods.jpg, and that same photo is used both on
+  // the blog card and at the top of the article.
+
+};
+/* ================= end of the part you need to edit ================ */
+
+/* WHERE EVERY PHOTO GOES — the full list
+   ------------------------------------------------------------------
+   images/hero-1.jpg … hero-6.jpg   homepage slideshow
+   images/ajay.jpg                  About, Mortgage, Contact pages
+   images/contact.jpg               beside the homepage contact form
+   images/beam-logo.png             footer, every page
+   images/blog/<name>.jpg           one per blog post (41 of them)
+
+   Don't want to hunt for filenames? Open the site in a browser. Every
+   empty photo slot shows a small dark tag in its corner with the exact
+   filename it's waiting for — "add images/blog/richwoods.jpg". The tag
+   vanishes the moment you add that file.
+   ------------------------------------------------------------------ */
+
+
+(function(){
+  "use strict";
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var view = document.getElementById('view');
+
+  /* =========================================================
+     Placeholder washes — stand-ins for real photography.
+     Swap each .ph for an <img> once photo files exist.
+     ========================================================= */
+  var W = {
+    hero: [
+      'radial-gradient(90% 70% at 22% 18%,#9FB6CE 0,transparent 60%),radial-gradient(80% 80% at 78% 30%,#C3D2E0 0,transparent 62%),radial-gradient(120% 90% at 50% 105%,#4F6076 0,transparent 70%),linear-gradient(170deg,#8FA8C2 0,#5C7089 55%,#33455C 100%)',
+      'radial-gradient(85% 65% at 70% 20%,#E3CBA8 0,transparent 60%),radial-gradient(80% 75% at 25% 35%,#BFA98D 0,transparent 62%),radial-gradient(120% 90% at 50% 105%,#4A4034 0,transparent 70%),linear-gradient(165deg,#D3BC9C 0,#93826B 55%,#4B4235 100%)',
+      'radial-gradient(80% 70% at 30% 25%,#A9C3A6 0,transparent 60%),radial-gradient(85% 70% at 75% 40%,#CBD9C4 0,transparent 62%),radial-gradient(120% 90% at 50% 105%,#3D5142 0,transparent 70%),linear-gradient(170deg,#9DB79A 0,#68806A 55%,#39493C 100%)',
+      'radial-gradient(85% 70% at 60% 15%,#C9AEB8 0,transparent 60%),radial-gradient(75% 75% at 20% 40%,#8FA0BC 0,transparent 62%),radial-gradient(120% 90% at 50% 105%,#33384F 0,transparent 70%),linear-gradient(170deg,#B0A2B8 0,#6E708F 55%,#333A52 100%)'
+    ],
+    portrait: 'radial-gradient(70% 55% at 50% 30%,#C6CEDB 0,transparent 65%),linear-gradient(165deg,#AFBACB 0,#7E8CA3 60%,#54617A 100%)',
+    consult:  'radial-gradient(75% 60% at 65% 25%,#D8DEE8 0,transparent 62%),radial-gradient(70% 70% at 25% 60%,#A6B4C8 0,transparent 60%),linear-gradient(160deg,#C0CAD9 0,#8494AB 60%,#4E5C74 100%)',
+    posts: [
+      'radial-gradient(75% 65% at 30% 25%,#B9C8D8 0,transparent 62%),linear-gradient(160deg,#9EB0C4 0,#66788F 100%)',
+      'radial-gradient(75% 65% at 70% 30%,#D6C6AE 0,transparent 62%),linear-gradient(160deg,#BCAB92 0,#7A6E5B 100%)',
+      'radial-gradient(75% 65% at 40% 30%,#AFC7B4 0,transparent 62%),linear-gradient(160deg,#93AC98 0,#5A6F60 100%)',
+      'radial-gradient(75% 65% at 60% 25%,#C4BBD2 0,transparent 62%),linear-gradient(160deg,#A499B4 0,#655C77 100%)',
+      'radial-gradient(75% 65% at 35% 35%,#C9CBD6 0,transparent 62%),linear-gradient(160deg,#A7ABBA 0,#666C7E 100%)',
+      'radial-gradient(75% 65% at 65% 30%,#D3C3BC 0,transparent 62%),linear-gradient(160deg,#B69F97 0,#6F5D57 100%)',
+      'radial-gradient(75% 65% at 45% 28%,#BFD0CE 0,transparent 62%),linear-gradient(160deg,#9DB3B0 0,#5E7370 100%)',
+      'radial-gradient(75% 65% at 55% 32%,#D8CBC0 0,transparent 62%),linear-gradient(160deg,#B8A695 0,#6E6155 100%)',
+      'radial-gradient(75% 65% at 38% 26%,#C2C9DA 0,transparent 62%),linear-gradient(160deg,#A0A9C0 0,#606983 100%)'
+    ]
+  };
+
+  /* =========================================================
+     Shared content — all copy taken from the current site
+     ========================================================= */
+  var REVIEWS = [
+    { n:'Manoj Malhotra',        c:'Frisco',     d:'07/30/2026', r:4, q:'Ajay knows Frisco &amp; surrounding areas like the back of his hand. We purchased our dream home in Frisco with Ajay&rsquo;s help. It was the right decision on our part to choose Ajay as our Realtor.' },
+    { n:'Rahul Anumula',         c:'Plano',      d:'06/16/2026', r:5, q:'Ajay Prabhu is an experienced realtor who is professional, reliable and always available.' },
+    { n:'Abhijeet Kulkarni',     c:'Frisco',     d:'01/23/2026', r:5, q:'Ajay is one of the best realtors I have worked with. He is super professional and understood our requirements to the &ldquo;T&rdquo; during the entire process.' },
+    { n:'Raghuram Burra',        c:'Plano',      d:'11/17/2025', r:5, q:'Ajay is very knowledgeable, diligent and easy to work with, and always willing to help during the entire process.' },
+    { n:'Vaibhav Tyagi',         c:'Allen',      d:'10/31/2025', r:5, q:'Ajay is truly a professional who helped us in finding our dream house recently. He made us buy the right property, spend the right amount, and was patient throughout.' },
+    { n:'Siva Kolli',            c:'Prosper',    d:'05/20/2025', r:5, q:'Ajay and his team have been very professional and helpful with every aspect of my home buying process.' },
+    { n:'Vikram Parolkar',       c:'Irving',     d:'08/27/2021', r:5, q:'Ajay is one of the most professional realtors I have worked with. He listened to our needs and helped source a comprehensive list of houses that met them.' },
+    { n:'Sakthivel Govindasamy', c:'Frisco',     d:'08/27/2021', r:5, q:'Ajay and team are committed to work. They very clearly mention the terms and conditions, follow up promptly for any documents, and they stick to it.' },
+    { n:'Snehal Vaishampayan',   c:'Frisco',     d:'08/27/2021', r:5, q:'Ajay helped us a lot right from house hunt till closing. We are very happy to have Ajay as our realtor as he guided us at each step and provided all information, answering all our questions with great patience.' },
+    { n:'Arun Gupta',            c:'Irving',     d:'08/27/2021', r:5, q:'Home buying is a lifetime dream but it is very difficult for a limited income family to select a home to meet all your needs. Ajay Prabhu is one of the best real estate agents in the DFW area.' },
+    { n:'Jantosh Bansal',        c:'Little Elm', d:'08/27/2021', r:5, q:'It was a great experience working with Ajay. He is very responsive and always goes the extra mile. He negotiates hard on behalf of his client and makes sure that closing goes smooth and on time.' },
+    { n:'Nagaraju Krishnappa',   c:'Frisco',     d:'08/27/2021', r:5, q:'My refinance loan processing was seamless and professional. Ajay, Pinky and Gautham were helpful and ready to answer any questions I had.' },
+    { n:'Shankar Krishnamurthy', c:'Sachse',     d:'08/27/2021', r:5, q:'My mortgage refinance experience was great and I had very responsive professionals who guided me throughout the process and completed the mortgage.' },
+    { n:'Mithun Bhat',           c:'McKinney',   d:'08/27/2021', r:5, q:'Ajay Prabhu helped me refinance my mortgage to a lower rate. Refinancing can be very confusing as there are many people out there who promise a lot.' },
+    { n:'Ashish Banthia',        c:'Irving',     d:'08/27/2021', r:5, q:'If you have found Ajay Prabhu, look no further. I have known Ajay for a few years now, he is a genuine guy and knows his trade. I highly recommend Ajay and his team for all Mortgage and Real Estate needs.' },
+    { n:'Vijay Kumar Eedunuri',  c:'McKinney',   d:'08/27/2021', r:5, q:'I would highly recommend Ajay for mortgage and real estate needs. Ajay and co are great to work with.' },
+    { n:'Ramesh Chittipolu',     c:'Coppell',    d:'08/27/2021', r:5, q:'Our family had a fantastic experience with Ajay Prabhu and his lending team.' },
+    { n:'Rajesh Akinepalli',     c:'Addison',    d:'08/27/2021', r:5, q:'They made the loan process a breeze! I would highly recommend going with them.' },
+    { n:'Deepak Kumar',          c:'Coppell',    d:'08/27/2021', r:5, q:'Ajay Prabhu has done a great job in refinancing our house.' },
+    { n:'Anand Casavarju',       c:'Little Elm', d:'08/27/2021', r:5, q:'Ajay patiently answered all our questions with a smile and without frustration. As a first time home buyer we had very little knowledge of the process.' },
+    { n:'Mahendra Periyadanam',  c:'Plano',      d:'08/27/2021', r:5, q:'Our refinancing loans were done by Ajay so fast with highest satisfaction. Ajay Prabhu is an exceptional professional who takes every single detail and concern and addresses them to the customer&rsquo;s advantage in a very timely manner.' },
+    { n:'Uday Ankolekar',        c:'Plano',      d:'08/27/2021', r:5, q:'I always thought re-financing is a cumbersome and tedious process. I am really glad that Ajay Prabhu and his team proved me wrong.' },
+    { n:'Dipal Panchal',         c:'McKinney',   d:'01/22/2020', r:5, q:'Ajay was very patient with us and helped us get a very good deal on our house. Considering it was our first home, he was very patient with us throughout.' },
+    { n:'Sumit Mundada',         c:'Frisco',     d:'01/22/2020', r:5, q:'Ajay always gives suggestions, pros &amp; cons of each property in detail and will continue showing properties until one finds his or her dream home. We moved to Texas from New Jersey with the mindset of buying a house in less than 6 months.' },
+    { n:'Madhu Mahanandigari',   c:'Coppell',    d:'01/22/2020', r:5, q:'Ajay guided us from start to finish of the home buying process.' },
+    { n:'Srikanth Srinivas',     c:'McKinney',   d:'01/22/2020', r:5, q:'Ajay was really awesome in helping us to get our dream home. He did multiple follow ups after an issue going on from the other side.' },
+    { n:'Sajeeva Ratnasinghe',   c:'Plano',      d:'01/22/2020', r:5, q:'I sold a house with Ajay&rsquo;s assistance recently. I was out of state and he did an excellent job helping with getting the house prepped and working through the multiple offer situation we had.' },
+    { n:'Raj Joshi',             c:'Plano',      d:'01/22/2020', r:5, q:'Ajay is someone a home buyer needs to have &mdash; very professional and a great human being! As first time home buyers we needed someone who not only helps us buy a house but also guides us through the process.' },
+    { n:'Shalini Tiwari',        c:'Plano',      d:'01/22/2020', r:5, q:'Ajay is the BEST and most knowledgeable in the real estate business!' },
+    { n:'Deepak Kumar',          c:'Coppell',    d:'09/25/2019', r:5, q:'I will recommend Ajay to everyone who is looking for an honest yet aggressive real estate deal maker.' },
+    { n:'Manoj Malhotra',        c:'Frisco',     d:'09/25/2019', r:5, q:'Ajay gives suggestions, pros &amp; cons of each property in detail. His property reports answer all your questions and clarify all doubts.' },
+    { n:'Manish Jain',           c:'Argyle',     d:'09/25/2019', r:5, q:'Ajay was incredible in educating us throughout the home buying process. Not only that, he was always eager to help us even post closing to sort things out.' },
+    { n:'Rahul Tandon',          c:'McKinney',   d:'09/25/2019', r:5, q:'Excellent realtor. Very patient. Above all, he is on your side.' },
+    { n:'Arjun Vadlamani',       c:'McKinney',   d:'03/05/2019', r:5, q:'Ajay is knowledgeable, approachable, personable, endlessly patient, and incredibly generous with his time &mdash; including mornings, evenings and weekends.' },
+    { n:'Devendra K.C.',         c:'Allen',      d:'03/05/2019', r:5, q:'Ajay&rsquo;s customer service has been great since the moment we met him until the end. Ajay Prabhu is a nice, professional and responsible realtor.' },
+    { n:'Tharakesh Rangaswamy',  c:'Frisco',     d:'03/05/2019', r:5, q:'Ajay was very knowledgeable about the houses both on the financials and the overall construction quality. We moved to Texas from Pennsylvania and did not have information about the housing market.' },
+    { n:'Tonya Wyatt',           c:'McKinney',   d:'03/05/2019', r:5, q:'My experience with Ajay was absolutely wonderful. Ajay has a lot of patience and is very professional and thoughtful.' },
+    { n:'Balaji Natarajan',      c:'McKinney',   d:'03/05/2019', r:5, q:'Ajay&rsquo;s timely emails about the important steps ensured that we were on top of all the activities. As this was our first home, we had tons of questions.' },
+    { n:'Pranav Amin',           c:'Carrollton', d:'03/05/2019', r:5, q:'Ajay provided necessary guidance where we were stuck and we used his advice to move forward. Always available to answer and take calls.' },
+    { n:'Pavan Kumar',           c:'McKinney',   d:'03/05/2019', r:5, q:'AJAY IS THE BEST PERSON to pick as a realtor. It was a two year journey with Ajay to find the right home within my limits. All the time Ajay was helpful and very patient in showing homes.' },
+    { n:'Salman Ali',            c:'Frisco',     d:'03/05/2019', r:5, q:'Ajay from Beam Real Estate works honestly and we got a quick response from starting all the way to the end.' },
+    { n:'Mahesh Telang',         c:'Lewisville', d:'03/05/2019', r:5, q:'Ajay helped us find our dream home and that too for an excellent price! He has been wonderful to work with, very patient and helpful while we searched for several months.' },
+    { n:'Varma Jampana',         c:'Plano',      d:'03/05/2019', r:5, q:'We had Ajay Prabhu as our agent for buying our house. Excellent experience working with him from start to end.' },
+    { n:'Vishwa Bharath',        c:'Frisco',     d:'03/05/2019', r:5, q:'Ajay gives you a very honest opinion and provides you with quality statistical information about the real estate market to support his claims.' }
+  ];
+
+  // "Choose Ajay Prabhu" vs "Choose Me" wording preserved per post, as on the live site.
+  // Each town guide also gets its own image slot: images/blog/guide-<town>.jpg
+  function guide(town, self, meta){
+    return {
+      t: 'The Ultimate Guide to Buying and Selling Real Estate in ' + town
+       + ': Why You Should Choose ' + (self ? 'Me' : 'Ajay Prabhu')
+       + ' as Your Indian Desi Realtor Real Estate Agent and Loan Officer',
+      tag: 'Area Guide',
+      m:   meta || (town + ', TX'),
+      img: 'images/blog/guide-' + town.toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.jpg'
+    };
+  }
+  var POSTS = [
+    { t:'5 Home Seller Strategies for Staging Your Home Perfectly', tag:'Selling',   m:'Seller tips', img:'images/blog/staging-home.jpg' },
+    { t:'5 Tips for Buying a Home',                                 tag:'Buying',    m:'Buyer tips', img:'images/blog/5-tips-buying.jpg' },
+    { t:'Amenities and Special Features of Richwoods Frisco',       tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods-amenities.jpg' },
+    { t:'Best Builders in Grove Frisco',                            tag:'Community', m:'Frisco, TX', img:'images/blog/grove-builders.jpg' },
+    { t:'Cashback Rebate Discount Realtor Dallas',                  tag:'Buying',    m:'Dallas, TX', img:'images/blog/cashback-rebate.jpg' },
+    { t:'Community Living at Its Best in Lexington, Frisco',        tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-community.jpg' },
+    { t:'Dealing with Financing',                                   tag:'Mortgage',  m:'Buyer guide', img:'images/blog/dealing-with-financing.jpg' },
+    { t:'Features and Amenities of The Grove in Frisco',            tag:'Community', m:'Frisco, TX', img:'images/blog/grove-features.jpg' },
+    { t:'Indian Desi Realtor Dallas',                               tag:'Buying',    m:'Dallas, TX', img:'images/blog/desi-realtor-dallas.jpg' },
+    { t:'Lexington Country in Frisco',                              tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-country.jpg' },
+    { t:'Luxury Living with Landon Homes at Lexington in Frisco',   tag:'Community', m:'Frisco, TX', img:'images/blog/landon-homes.jpg' },
+    { t:'Municipal Utility District (MUD) Taxes and Public Improvement District (PID) Assessments: Pros and Cons', tag:'Mortgage', m:'Buyer guide', img:'images/blog/mud-pid-taxes.jpg' },
+    { t:'Preparing to Sell',                                        tag:'Selling',   m:'Seller tips', img:'images/blog/preparing-to-sell.jpg' },
+    { t:'Pros and Cons of Richwoods, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods-pros-cons.jpg' },
+    { t:'Pros and Cons of The Grove, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/grove-pros-cons.jpg' },
+    { t:'Relocating to the Big City',                               tag:'Buying',    m:'Buyer guide', img:'images/blog/relocating.jpg' },
+    { t:'Richwoods Frisco',                                         tag:'Community', m:'Frisco, TX', img:'images/blog/richwoods.jpg' },
+    { t:'Smart Buyer&rsquo;s Guide to Choosing the Perfect Property', tag:'Buying',  m:'Buyer guide', img:'images/blog/smart-buyers-guide.jpg' },
+    { t:'The 4 Most Important Questions You Need to Ask Before Selling Your Home', tag:'Selling', m:'Seller tips', img:'images/blog/4-questions-before-selling.jpg' },
+    { t:'The 5 Biggest Mistakes to Avoid When Buying Your First Home', tag:'Buying', m:'Buyer tips', img:'images/blog/5-mistakes-first-home.jpg' },
+    guide('Allen'),
+    guide('Anna'),
+    guide('Aubrey'),
+    guide('Carrollton', true),
+    guide('Celina', true),
+    guide('Colony', false, 'The Colony, TX'),
+    guide('Coppell', true),
+    guide('DALLAS', true, 'Dallas, TX'),
+    guide('DFW', false, 'DFW Metroplex'),
+    guide('Flower Mound', true),
+    guide('Frisco'),
+    guide('Irving'),
+    guide('Lewisville'),
+    guide('Melissa'),
+    guide('Plano'),
+    guide('Princeton', true),
+    guide('Prosper'),
+    guide('Wylie', true),
+    { t:'Toll Brothers in Lexington, Frisco',                       tag:'Community', m:'Frisco, TX', img:'images/blog/toll-brothers.jpg' },
+    { t:'Top Home Builders in Lexington Frisco',                    tag:'Community', m:'Frisco, TX', img:'images/blog/lexington-builders.jpg' },
+    { t:'Why Working With a Real Estate Professional is the Best Decision You&rsquo;ll Ever Make', tag:'Buying', m:'Buyer guide', img:'images/blog/why-work-with-a-pro.jpg' }
+  ];
+
+  // stable slugs / ids for the detail routes
+  function slugify(s){
+    return s.replace(/&rsquo;/g,'').replace(/&[a-z]+;/g,' ')
+            .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80);
+  }
+  POSTS.forEach(function(p, i){ p.slug = slugify(p.t) || ('post-' + i); p.i = i; });
+  REVIEWS.forEach(function(r, i){ r.id = String(i); });
+
+  var AREAS = ['Frisco','Prosper','McKinney','Allen','Plano','Little Elm','Celina','Anna','Melissa','Princeton','Murphy','Wylie','Fairview','Lucas','Parker','Richardson','Dallas','Coppell','Irving','Flower Mound','Carrollton','The Colony','Lewisville'];
+
+  var BIO = "As a seasoned real estate professional &amp; loan officer, I understand that buying or selling a home is more than just a transaction: it's a life-changing experience. That's why I am dedicated to providing exceptional, personalized service for all my clients. I take great pride in the relationships I build and always work relentlessly on the client's behalf to help them achieve their real estate goals.";
+
+  /* =========================================================
+     Small helpers
+     ========================================================= */
+  function stars(n, cls){
+    var out = '<div class="' + (cls || 'tst-stars') + '">';
+    for (var i=1;i<=5;i++){
+      out += '<svg viewBox="0 0 24 24" fill="currentColor"' + (i<=n?'':' class="off"') +
+             '><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>';
+    }
+    return out + '</div>';
+  }
+  function initials(name){
+    return name.split(' ').map(function(w){ return w.charAt(0); }).join('').slice(0,2).toUpperCase();
+  }
+  function reviewCard(t){
+    return '<a class="tst-card" href="#/testimonials/' + t.id + '">' + stars(t.r)
+      + '<p class="tst-quote">&ldquo;' + t.q + '&rdquo;</p>'
+      + '<div class="tst-who"><div class="tst-av">' + initials(t.n) + '</div>'
+      + '<div><div class="n">' + t.n + '</div><div class="c">' + t.c + ' &middot; ' + t.r.toFixed(1) + '/5.0</div></div>'
+      + '</div></a>';
+  }
+  function postCard(p){
+    return '<a class="post" href="#/blog/' + p.slug + '">'
+      + '<div class="post-img">' + photo(p.img, W.posts[p.i % W.posts.length], fileLabel(p.img))
+      + '<span class="post-tag">' + p.tag + '</span></div>'
+      + '<div class="post-body"><h3>' + p.t + '</h3>'
+      + '<div class="post-meta">' + p.m + '</div>'
+      + '<div class="post-more">Read more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>'
+      + '</div></a>';
+  }
+  var ICON = {
+    phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+    mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+    user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+    check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+    key:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 3 3L22 7l-3-3"/><path d="m18.5 10.5-8 8"/><circle cx="7" cy="17" r="4"/></svg>',
+    home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>',
+    refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>',
+    search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
+    drag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4M2 12h20"/></svg>'
+  };
+
+  var AGENT_FACTS =
+      '<div class="agent-facts">'
+    + '<div class="row">' + ICON.user + '<span><strong>Ajay Prabhu</strong><span class="lic">&nbsp;&middot;&nbsp; License #0673419</span></span></div>'
+    + '<div class="row">' + ICON.mail + '<a href="mailto:ajaybprabhu@gmail.com">ajaybprabhu@gmail.com</a></div>'
+    + '<div class="row">' + ICON.phone + '<a href="tel:4699963104">(469) 996-3104</a></div>'
+    + '</div>';
+
+  var CONTACT_FORM_FIELDS =
+      '<div class="field-row">'
+    + '<div class="field"><label for="fn">First name*</label><input id="fn" type="text" placeholder="First name" required></div>'
+    + '<div class="field"><label for="ln">Last name*</label><input id="ln" type="text" placeholder="Last name" required></div>'
+    + '</div>'
+    + '<div class="field-row">'
+    + '<div class="field"><label for="phn">Phone*</label><input id="phn" type="tel" placeholder="(469) 000-0000" required></div>'
+    + '<div class="field"><label for="em">Email*</label><input id="em" type="email" placeholder="you@email.com" required></div>'
+    + '</div>'
+    + '<div class="field"><label for="msg">Your message*</label><textarea id="msg" placeholder="Tell me a little about what you\'re looking for." required></textarea></div>';
+
+  /* =========================================================
+     Page templates
+     ========================================================= */
+  var PAGES = {};
+
+  /* ---------- HOME ---------- */
+  PAGES['/'] = function(){
+    return ''
+    + '<section class="hero" id="hero">'
+    +   '<div class="hero-slides" id="heroSlides"></div>'
+    +   '<div class="hero-ctas">'
+    +     '<a href="#/contact" class="hbtn hbtn-buy">Looking to buy?</a>'
+    +     '<a href="#/contact" class="hbtn hbtn-sell">Looking to sell?</a>'
+    +   '</div>'
+    +   '<div class="hero-dots" id="heroDots"></div>'
+    + '</section>'
+
+    + '<section class="agent-sec">'
+    +   '<svg class="map" viewBox="0 0 1400 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'
+    +     '<g fill="none" stroke="#CBD5E4" stroke-width="1.6">'
+    +       '<path d="M-20 140 C 220 120, 380 200, 620 175 S 1080 120, 1420 165"/>'
+    +       '<path d="M-20 330 C 260 300, 430 380, 700 350 S 1150 300, 1420 340"/>'
+    +       '<path d="M-20 500 C 200 470, 420 540, 660 510 S 1120 470, 1420 505"/>'
+    +       '<path d="M180 -20 C 200 180, 150 340, 205 640"/>'
+    +       '<path d="M520 -20 C 545 200, 495 380, 560 640"/>'
+    +       '<path d="M880 -20 C 900 190, 850 370, 915 640"/>'
+    +       '<path d="M1210 -20 C 1230 200, 1180 380, 1245 640"/>'
+    +     '</g>'
+    +     '<g fill="none" stroke="#DCE3EE" stroke-width="1"><path d="M-20 230 H1420 M-20 415 H1420 M350 -20 V640 M700 -20 V640 M1050 -20 V640"/></g>'
+    +   '</svg>'
+    +   '<div class="wrap"><div class="agent-card">'
+    +     '<div class="agent-photo">' + photo(IMAGES.headshot, W.portrait, fileLabel(IMAGES.headshot)) + '</div>'
+    +     '<div class="agent-copy">'
+    +       '<h2 class="sec-title">Work with an expert who knows your market</h2>'
+    +       '<div class="rule"></div>' + AGENT_FACTS
+    +       '<p class="bio">' + BIO + ' Areas served include ' + AREAS.slice(0,10).join(', ') + ' and more across the Metroplex.</p>'
+    +       '<div class="agent-actions">'
+    +         '<a href="#/about" class="btn btn-outline">Read More</a>'
+    +         '<a href="#/contact" class="btn btn-solid">Contact</a>'
+    +       '</div>'
+    +     '</div>'
+    +   '</div></div>'
+    + '</section>'
+
+    + '<section class="section">'
+    +   '<div class="wrap">'
+    +     '<div class="tst-head">'
+    +       '<h2 class="sec-title">What clients say about working with me</h2>'
+    +       '<div class="tst-hint">' + ICON.drag + 'Hold to pause &middot; drag to browse</div>'
+    +     '</div>'
+    +     '<div class="tst-viewport" id="tstViewport"><div class="tst-track" id="tstTrack"></div></div>'
+    +     '<div class="tst-foot"><a href="#/testimonials" class="btn btn-solid">View all</a></div>'
+    +   '</div>'
+    + '</section>'
+
+    + '<section class="contact-band on-navy">'
+    +   '<div class="wrap">'
+    +     '<div class="head"><h2 class="sec-title">Would love to hear from you</h2>'
+    +     '<p>Get in touch with me by filling out the form below, and I will get right back to you. You can also call or text me at any time.</p></div>'
+    +     '<div class="contact-grid">'
+    +       '<form onsubmit="return false;">' + CONTACT_FORM_FIELDS
+    +         '<button type="submit" class="btn btn-light">Send message</button>'
+    +         '<p class="form-note">Demo form &mdash; not yet wired to a mail service.</p>'
+    +       '</form>'
+    +       '<div class="contact-photo">' + photo(IMAGES.contact, W.consult, fileLabel(IMAGES.contact)) + '</div>'
+    +     '</div>'
+    +   '</div>'
+    + '</section>'
+
+    + '<section class="section mist">'
+    +   '<div class="wrap">'
+    +     '<div style="text-align:center;margin-bottom:52px;"><h2 class="sec-title">Latest blog posts</h2></div>'
+    +     '<div class="posts">' + POSTS.slice(0,6).map(postCard).join('') + '</div>'
+    +     '<div class="blog-foot"><a href="#/blog" class="btn btn-solid">Read more</a></div>'
+    +   '</div>'
+    + '</section>';
+  };
+
+  /* ---------- MORTGAGE ---------- */
+  PAGES['/mortgage'] = function(){
+    var progs = [
+      { i:ICON.check, h:'Loan pre-qualification', p:'Know your number before you shop. A pre-qualification tells you what you can borrow and shows sellers you are a serious buyer when you make an offer.' },
+      { i:ICON.home,  h:'Home purchase loan',     p:'Financing for your purchase, arranged alongside the search itself. Because I am also your realtor, the offer and the loan move on the same timeline.' },
+      { i:ICON.refresh, h:'Home refinance',       p:'Lower your rate, shorten your term, or pull equity out of the home you already own. I will run the numbers to see whether a refinance is worth the closing costs.' }
+    ];
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<div class="eyebrow">Sure Fund Mortgage &middot; NMLS #1795977</div>'
+    +   '<h1>Mortgage</h1>'
+    +   '<p class="lede">Purchasing or refinancing a home is an important step. Let me guide you to the loan program that is the right fit for your needs.</p>'
+    +   '<div class="rule"></div>'
+    + '</div></section>'
+
+    + '<section class="section tight"><div class="wrap"><div class="split">'
+    +   '<div class="visual">' + photo(IMAGES.headshot, W.portrait, fileLabel(IMAGES.headshot)) + '</div>'
+    +   '<div>'
+    +     '<h2>One person for the house and the loan</h2><div class="rule"></div>'
+    +     '<p class="bio">As a Loan Officer with Sure Fund Mortgage, I work with multiple lenders to get you the best rate at the lowest possible cost. I am committed to providing you with the highest quality service combined with the fastest turnaround time.</p>'
+    +     '<p class="bio">Most buyers juggle a realtor and a separate loan officer who have never spoken to each other. I am both, so the financing and the offer are planned together from the first conversation &mdash; which matters most when a deal is moving fast.</p>'
+    +     '<div class="agent-actions">'
+    +       '<a href="tel:4699963104" class="btn btn-solid">' + ICON.phone + 'Call (469) 996-3104</a>'
+    +       '<a href="#/contact" class="btn btn-outline">Email me</a>'
+    +     '</div>'
+    +   '</div>'
+    + '</div></div></section>'
+
+    + '<section class="section mist"><div class="wrap">'
+    +   '<div style="max-width:600px;margin-bottom:44px;"><div class="eyebrow">What I can help with</div>'
+    +   '<h2 class="sec-title" style="margin-top:12px;">Loan services</h2></div>'
+    +   '<div class="cards3">' + progs.map(function(p){
+          return '<div class="icard"><div class="ic">' + p.i + '</div><h3>' + p.h + '</h3><p>' + p.p + '</p></div>';
+        }).join('') + '</div>'
+    + '</div></section>'
+
+    + '<section class="section"><div class="wrap"><div class="cta">'
+    +   '<div><h2>Let&rsquo;s talk about your loan</h2>'
+    +   '<p>Tell me what you are trying to do and I will tell you straight whether the numbers work.</p></div>'
+    +   '<div class="cta-actions">'
+    +     '<a href="tel:4699963104" class="btn btn-light">' + ICON.phone + '(469) 996-3104</a>'
+    +     '<a href="#/contact" class="btn btn-ghost-light">Send a message</a>'
+    +   '</div>'
+    + '</div></div></section>';
+  };
+
+  /* ---------- ABOUT ---------- */
+  PAGES['/about'] = function(){
+    var secs = [
+      { id:'selling', h:'Selling tactics', b:['If you are looking to get top dollar for your home, you need a realtor who markets your home extensively, pays attention to details and has superior negotiation skills &mdash; that can make the difference between an offer at asking price and multiple offers over asking price. My 10-step marketing plan is designed for maximum exposure of your home and to get you top dollar in the shortest amount of time.','I conduct comprehensive market analysis to price your home at the best possible price. I hire a professional photographer to take great pictures and use a professional stager for staging consultation. I market the home extensively on the most popular websites by leveraging the digital platform and also target active real estate agents in the area. That can be the difference between a home sitting on the market and one that&rsquo;s sold fast.'] },
+      { id:'price',   h:'Price negotiation', b:['I have a strong data analytics &amp; financial background. I conduct comprehensive analysis of past sales data and look at several key metrics and trends to negotiate the best possible price if you are buying, and to price the home accurately if you are selling.'] },
+      { id:'market',  h:'Market analysis', b:['Not all markets are equal. Some counties and neighborhoods might be doing well at certain price ranges while others might not be. I study the market closely and look at key metrics such as supply, demand, median price, average price per sq. ft., days on market and annual appreciation rate, and can advise you on price points for different neighborhoods.'] },
+      { id:'hood',    h:'Neighborhood knowledge', b:['I have lived with my wife and kids in the DFW Metroplex for the last several years. So I know this area and the school districts well and can help you sort through all the options to find the right house in the right neighborhood.'] },
+      { id:'essential', h:'Essential things', b:['From my experience buying and selling, I know the essential things to look for while buying a new construction or resale house. This includes evaluating plot map, floor plan, inspection report, title commitment, survey and HOA documents. This way you can watch out for problem houses, protect yourself from possible unknown hazards, and not end up with a money pit.'] },
+      { id:'mortgage', h:'Mortgage', b:['I am also a Loan Officer with Sure Fund Mortgage and can assist you with loan pre-qualification, home purchase loans, home refinancing and all your mortgage needs.'] }
+    ];
+    var creds = [
+      'Member of Collin County Association of Realtors (CCAR)',
+      'Member of National Association of Realtors (NAR)',
+      'Member of Texas Association of Realtors (TAR)',
+      'Licensed with Texas Real Estate Commission (TREC) &mdash; License #0673419',
+      'Licensed with Nationwide Mortgage Licensing System (NMLS) &mdash; License #1795977',
+      'Previously worked with Ernst &amp; Young, Enterprise and Citibank in senior management positions'
+    ];
+    // Buttons, not hash links — a bare "#id" href would hijack the router's hash.
+    function tocItem(id, label){
+      return '<a role="button" tabindex="0" data-toc="' + id + '">' + label + '</a>';
+    }
+    var toc = secs.map(function(s){ return tocItem(s.id, s.h); }).join('')
+            + tocItem('creds','Affiliations') + tocItem('areas','Areas served');
+
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<div class="eyebrow">Realtor &amp; Loan Officer &middot; Beam Real Estate</div>'
+    +   '<h1>About Ajay</h1>'
+    +   '<div class="rule"></div>'
+    + '</div></section>'
+
+    + '<section class="section tight"><div class="wrap">'
+    +   '<div class="split" style="align-items:start;">'
+    +     '<div class="visual">' + photo(IMAGES.headshot, W.portrait, fileLabel(IMAGES.headshot)) + '</div>'
+    +     '<div>' + AGENT_FACTS + '<p class="bio">' + BIO + '</p>'
+    +     '<div class="agent-actions"><a href="#/contact" class="btn btn-solid">Contact Ajay</a>'
+    +     '<a href="#/testimonials" class="btn btn-outline">Read reviews</a></div></div>'
+    +   '</div>'
+    // Lead-in: sits under the photo + bio and hands off to the strategy list below.
+    +   '<p class="leadin">Anyone can show or list houses and help you buy or sell. But not many can combine '
+    +   'data analytics, market knowledge and property research the way I can to help you find that perfect '
+    +   'house in the right neighborhood at the best price. If you are looking to sell, I will help you sell '
+    +   'it quickly at the best possible price. <strong>Here is how I do it.</strong></p>'
+    + '</div></section>'
+
+    + '<section class="section mist"><div class="wrap"><div class="about-layout">'
+    +   '<aside class="toc"><h4>On this page</h4><div class="toc-links">' + toc + '</div></aside>'
+    +   '<div class="prose">'
+    +     secs.map(function(s){
+            return '<section id="' + s.id + '"><h3>' + s.h + '</h3>'
+                 + s.b.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</section>';
+          }).join('')
+    +     '<section id="creds"><h3>Professional affiliations</h3><ul class="creds">'
+    +       creds.map(function(c){ return '<li>' + ICON.check + '<span>' + c + '</span></li>'; }).join('')
+    +     '</ul></section>'
+    +     '<section id="areas"><h3>Areas served</h3><div class="areas">'
+    +       AREAS.map(function(a){ return '<span>' + a + '</span>'; }).join('')
+    +     '</div>'
+    +     '<p style="margin-top:26px;">Call or email me for a consultation today.</p>'
+    +     '<div class="agent-actions"><a href="tel:4699963104" class="btn btn-solid">' + ICON.phone + '(469) 996-3104</a>'
+    +     '<a href="mailto:ajaybprabhu@gmail.com" class="btn btn-outline">Email</a></div></section>'
+    +   '</div>'
+    + '</div></div></section>';
+  };
+
+  /* ---------- TESTIMONIALS ---------- */
+  PAGES['/testimonials'] = function(){
+    var avg = REVIEWS.reduce(function(s,r){ return s + r.r; }, 0) / REVIEWS.length;
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<div class="eyebrow">Client reviews</div><h1>Testimonials</h1>'
+    +   '<p class="lede">Reviews from buyers, sellers and refinance clients across the Metroplex.</p>'
+    +   '<div class="rule"></div>'
+    + '</div></section>'
+    + '<section class="section tight mist"><div class="wrap">'
+    +   '<div class="rating-summary">'
+    +     '<div><div class="big">' + avg.toFixed(1) + '</div></div>'
+    +     '<div>' + stars(Math.round(avg), 'stars') + '<div class="cap">Average rating across ' + REVIEWS.length + ' published reviews</div></div>'
+    +   '</div>'
+    +   '<div class="tst-grid" id="tstGrid"></div>'
+    +   '<div class="tst-foot"><button class="btn btn-solid" id="loadMoreT">Load more</button></div>'
+    + '</div></section>';
+  };
+
+  /* ---------- BLOG ---------- */
+  PAGES['/blog'] = function(){
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<div class="eyebrow">Guides &amp; market notes</div><h1>Blog</h1>'
+    +   '<p class="lede">Neighborhood guides, buyer and seller tips, and explainers on the things that trip people up &mdash; MUD taxes, PID assessments, new construction.</p>'
+    +   '<div class="rule"></div>'
+    + '</div></section>'
+    + '<section class="section tight mist"><div class="wrap">'
+    +   '<div class="searchbar">' + ICON.search + '<input type="search" id="blogSearch" placeholder="Search blog posts..." aria-label="Search blog posts"></div>'
+    +   '<div class="posts" id="blogGrid"></div>'
+    +   '<div class="empty" id="blogEmpty" hidden>No posts match that search.</div>'
+    +   '<div class="blog-foot"><button class="btn btn-solid" id="loadMoreB">Load more</button></div>'
+    + '</div></section>';
+  };
+
+  /* ---------- CONTACT ---------- */
+  PAGES['/contact'] = function(){
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<div class="eyebrow">Get in touch</div><h1>Contact</h1>'
+    +   '<p class="lede">Fill out the form and I will get right back to you. You can also call or text me at any time.</p>'
+    +   '<div class="rule"></div>'
+    + '</div></section>'
+    + '<section class="section tight"><div class="wrap"><div class="contact-grid on-light">'
+    +   '<form onsubmit="return false;">' + CONTACT_FORM_FIELDS
+    +     '<div class="field"><label for="sec">Security question*</label>'
+    +     '<input id="sec" type="text" placeholder="1 + 9 = ?" required></div>'
+    +     '<button type="submit" class="btn btn-solid">Send message</button>'
+    +     '<p class="form-note">Demo form &mdash; not yet wired to a mail service.</p>'
+    +   '</form>'
+    +   '<div>'
+    +     '<div class="contact-photo" style="border-color:var(--line);">' + photo(IMAGES.headshot, W.portrait, fileLabel(IMAGES.headshot)) + '</div>'
+    +     '<div style="margin-top:28px;">' + AGENT_FACTS + '</div>'
+    +     '<p class="bio">Ajay Prabhu &middot; Beam Real Estate<br>14455 Webb Chapel Rd, Farmers Branch, TX 75234</p>'
+    +   '</div>'
+    + '</div></div></section>';
+  };
+
+  /* ---------- detail pages ---------- */
+  var BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>';
+
+  function renderPost(slug){
+    var p = null;
+    for (var i = 0; i < POSTS.length; i++){ if (POSTS[i].slug === slug){ p = POSTS[i]; break; } }
+    if (!p) return null;
+    var related = POSTS.filter(function(o){ return o.tag === p.tag && o.slug !== p.slug; }).slice(0,3);
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<a class="crumb" href="#/blog">' + BACK + 'All posts</a>'
+    +   '<div class="article">'
+    +     '<span class="kicker">' + p.tag + '</span>'
+    +     '<h1>' + p.t + '</h1>'
+    +     '<div class="byline"><div class="tst-av">AP</div>'
+    +       '<div><strong>Ajay Prabhu</strong> &middot; ' + p.m + '</div></div>'
+    +   '</div>'
+    + '</div></section>'
+    + '<section class="section tight"><div class="wrap">'
+    +   '<div class="article-hero">' + photo(p.img, W.posts[p.i % W.posts.length], fileLabel(p.img)) + '</div>'
+    +   '<div class="article"><div class="draft">'
+    +     '<div class="tag">Article content</div>'
+    +     '<p>This page is ready and linked &mdash; the body copy for &ldquo;' + p.t + '&rdquo; drops in here. '
+    +     'Paste the existing article text from the current site, or write it fresh.</p>'
+    +     '<div class="skeleton"><i></i><i></i><i></i><i></i><i></i><i></i></div>'
+    +   '</div></div>'
+    + '</div></section>'
+    + (related.length ? '<section class="section tight mist"><div class="wrap">'
+    +   '<div style="margin-bottom:34px;"><h2 class="sec-title">More in ' + p.tag + '</h2></div>'
+    +   '<div class="posts">' + related.map(postCard).join('') + '</div>'
+    + '</div></section>' : '')
+    + '<section class="section"><div class="wrap"><div class="cta">'
+    +   '<div><h2>Questions about this?</h2><p>Call or send a message and I will get right back to you.</p></div>'
+    +   '<div class="cta-actions">'
+    +     '<a href="tel:4699963104" class="btn btn-light">' + ICON.phone + '(469) 996-3104</a>'
+    +     '<a href="#/contact" class="btn btn-ghost-light">Send a message</a>'
+    +   '</div>'
+    + '</div></div></section>';
+  }
+
+  function renderReview(id){
+    var t = null;
+    for (var i = 0; i < REVIEWS.length; i++){ if (REVIEWS[i].id === id){ t = REVIEWS[i]; break; } }
+    if (!t) return null;
+    var more = REVIEWS.filter(function(o){ return o.id !== t.id; }).slice(0,3);
+    return ''
+    + '<section class="pagetop"><div class="wrap">'
+    +   '<a class="crumb" href="#/testimonials">' + BACK + 'All testimonials</a>'
+    +   '<div class="eyebrow">Client review</div>'
+    +   '<div class="rule"></div>'
+    + '</div></section>'
+    + '<section class="section tight"><div class="wrap">'
+    +   '<div class="review-panel">'
+    +     stars(t.r)
+    +     '<h1 class="quote-big">&ldquo;' + t.q.split('. ')[0] + '.&rdquo;</h1>'
+    +     '<p class="full">' + t.q + '</p>'
+    +     '<div class="meta"><div class="tst-av">' + initials(t.n) + '</div>'
+    +       '<div><div class="who-n">' + t.n + '</div>'
+    +       '<div class="who-c">' + t.c + ', TX &middot; ' + t.d + ' &middot; ' + t.r.toFixed(1) + '/5.0</div></div>'
+    +     '</div>'
+    +   '</div>'
+    + '</div></section>'
+    + '<section class="section tight mist"><div class="wrap">'
+    +   '<div style="margin-bottom:34px;"><h2 class="sec-title">More reviews</h2></div>'
+    +   '<div class="tst-grid">' + more.map(reviewCard).join('') + '</div>'
+    + '</div></section>'
+    + '<section class="section"><div class="wrap"><div class="cta">'
+    +   '<div><h2>Ready to start?</h2><p>Tell me what you are looking for and I will get right back to you.</p></div>'
+    +   '<div class="cta-actions">'
+    +     '<a href="tel:4699963104" class="btn btn-light">' + ICON.phone + '(469) 996-3104</a>'
+    +     '<a href="#/contact" class="btn btn-ghost-light">Send a message</a>'
+    +   '</div>'
+    + '</div></div></section>';
+  }
+
+  /* =========================================================
+     Per-page behaviour
+     ========================================================= */
+  var teardown = [];
+  function onCleanup(fn){ teardown.push(fn); }
+  function cleanup(){ teardown.forEach(function(f){ try{ f(); }catch(e){} }); teardown = []; }
+
+  /* One photo slot: gradient + label underneath, real photo on top.
+     A missing file makes the <img> delete itself, revealing the
+     placeholder — a wrong filename can never break a page. */
+  /* Turns 'images/blog/richwoods.jpg' into 'images/blog/richwoods.jpg' for the
+     on-screen tag, so an empty slot tells you exactly which file to add. */
+  function fileLabel(src){ return src ? 'add ' + src : ''; }
+
+  function photo(src, wash, label){
+    return '<div class="ph" style="background-image:' + wash + '"></div>'
+         + '<div class="ph-note">' + label + '</div>'
+         + (src ? '<img class="ph-img" src="' + src + '" alt="" onerror="this.remove()">' : '');
+  }
+
+  function paintPlaceholders(root){
+    root.querySelectorAll('[data-ph]').forEach(function(el){
+      var k = el.getAttribute('data-ph');
+      if (W[k]) el.style.backgroundImage = W[k];
+    });
+  }
+
+  /* ---- hero carousel ---- */
+  function initHero(){
+    var host = document.getElementById('heroSlides');
+    var dotsHost = document.getElementById('heroDots');
+    if (!host) return;
+    // one slide per photo listed in IMAGES.hero (falls back to a wash)
+    var count = Math.max((IMAGES.hero || []).length, W.hero.length);
+    for (var i = 0; i < count; i++){
+      var css = W.hero[i % W.hero.length];
+      var src = (IMAGES.hero || [])[i];
+      var s = document.createElement('div');
+      s.className = 'hero-slide' + (i===0 ? ' is-on' : '');
+      var wrap = document.createElement('div');
+      wrap.className = 'ph-wrap';
+      wrap.innerHTML = photo(src, css, fileLabel(src) || 'Slideshow photo');
+      s.appendChild(wrap);
+      host.appendChild(s);
+      dotsHost.appendChild(makeDot(i));
+    }
+    function makeDot(i){
+      var d = document.createElement('button');
+      d.className = i===0 ? 'is-on' : '';
+      d.setAttribute('aria-label','Show image ' + (i+1));
+      d.addEventListener('click', function(){ show(i); restart(); });
+      return d;
+    }
+    var slides = host.querySelectorAll('.hero-slide');
+    var dots = dotsHost.querySelectorAll('button');
+    var at = 0, timer = null;
+    function show(i){
+      if (i === at) return;
+      slides[at].classList.remove('is-on'); dots[at].classList.remove('is-on');
+      at = i;
+      slides[at].classList.add('is-on'); dots[at].classList.add('is-on');
+      var inner = slides[at].querySelector('.ph-wrap');
+      inner.style.animation = 'none'; void inner.offsetWidth; inner.style.animation = '';
+    }
+    function restart(){
+      if (reduce) return;
+      clearInterval(timer);
+      timer = setInterval(function(){ show((at+1) % slides.length); }, 6500);
+    }
+    restart();
+    onCleanup(function(){ clearInterval(timer); });
+  }
+
+  /* ---- testimonial marquee ---- */
+  function initMarquee(){
+    var track = document.getElementById('tstTrack');
+    var vp = document.getElementById('tstViewport');
+    if (!track || !vp) return;
+
+    var pick = REVIEWS.slice(0, 12);
+    track.innerHTML = pick.map(reviewCard).join('') + pick.map(reviewCard).join('');
+
+    var x = 0, halfW = 0, dragging = false, downX = 0, downOff = 0, moved = 0, raf = null;
+    var SPEED = 32;
+
+    function measure(){ halfW = track.scrollWidth / 2; }
+    measure();
+    window.addEventListener('resize', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+    function norm(){
+      if (halfW <= 0) return;
+      while (x <= -halfW) x += halfW;
+      while (x > 0) x -= halfW;
+    }
+    function draw(){ track.style.transform = 'translate3d(' + x + 'px,0,0)'; }
+
+    var prev = performance.now();
+    function tick(now){
+      var dt = Math.min((now - prev)/1000, .05); prev = now;
+      if (!dragging && !reduce){ x -= SPEED * dt; norm(); draw(); }
+      raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+
+    function down(e){
+      dragging = true; moved = 0; downX = e.clientX; downOff = x;
+      vp.classList.add('is-grab');
+      try { vp.setPointerCapture(e.pointerId); } catch(_){}
+    }
+    function move(e){
+      if (!dragging) return;
+      var dx = e.clientX - downX;
+      moved = Math.abs(dx);
+      x = downOff + dx; norm(); draw();
+    }
+    function up(e){
+      if (!dragging) return;
+      dragging = false; vp.classList.remove('is-grab');
+      try { vp.releasePointerCapture(e.pointerId); } catch(_){}
+    }
+    function guard(e){ if (moved > 6){ e.preventDefault(); e.stopPropagation(); } }
+
+    vp.addEventListener('pointerdown', down);
+    vp.addEventListener('pointermove', move);
+    vp.addEventListener('pointerup', up);
+    vp.addEventListener('pointercancel', up);
+    vp.addEventListener('pointerleave', up);
+    vp.addEventListener('click', guard, true);
+
+    onCleanup(function(){
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', measure);
+    });
+  }
+
+  /* ---- testimonials page ---- */
+  function initTestimonialsPage(){
+    var grid = document.getElementById('tstGrid');
+    var more = document.getElementById('loadMoreT');
+    if (!grid) return;
+    var shown = 9;
+    function render(){
+      grid.innerHTML = REVIEWS.slice(0, shown).map(reviewCard).join('');
+      more.hidden = shown >= REVIEWS.length;
+    }
+    more.addEventListener('click', function(){ shown += 9; render(); });
+    render();
+  }
+
+  /* ---- blog page ---- */
+  function initBlogPage(){
+    var grid = document.getElementById('blogGrid');
+    var input = document.getElementById('blogSearch');
+    var more = document.getElementById('loadMoreB');
+    var empty = document.getElementById('blogEmpty');
+    if (!grid) return;
+    var shown = 6, q = '';
+    function filtered(){
+      if (!q) return POSTS;
+      var t = q.toLowerCase();
+      return POSTS.filter(function(p){
+        return (p.t + ' ' + p.tag + ' ' + p.m).toLowerCase().indexOf(t) !== -1;
+      });
+    }
+    function render(){
+      var list = filtered();
+      grid.innerHTML = list.slice(0, shown).map(postCard).join('');
+      empty.hidden = list.length !== 0;
+      more.hidden = shown >= list.length;
+    }
+    input.addEventListener('input', function(){ q = input.value.trim(); shown = 6; render(); });
+    more.addEventListener('click', function(){ shown += 6; render(); });
+    render();
+  }
+
+  /* ---- about page scroll-spy ---- */
+  function initAbout(){
+    var links = document.querySelectorAll('[data-toc]');
+    if (!links.length) return;
+    var secs = [].slice.call(document.querySelectorAll('.prose > section'));
+
+    function jump(a){
+      var el = document.getElementById(a.getAttribute('data-toc'));
+      if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
+    }
+    links.forEach(function(a){
+      a.style.cursor = 'pointer';
+      a.addEventListener('click', function(){ jump(a); });
+      a.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); jump(a); }
+      });
+    });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        links.forEach(function(a){
+          a.classList.toggle('is-on', a.getAttribute('data-toc') === en.target.id);
+        });
+      });
+    }, { rootMargin:'-120px 0px -65% 0px', threshold:0 });
+    secs.forEach(function(s){ io.observe(s); });
+    onCleanup(function(){ io.disconnect(); });
+  }
+
+  /* =========================================================
+     Router
+     ========================================================= */
+  var navLinks = document.getElementById('navLinks');
+  var navToggle = document.getElementById('navToggle');
+  var nav = document.getElementById('nav');
+
+  function currentRoute(){
+    var h = location.hash.replace(/^#/, '');
+    return (!h || h.charAt(0) !== '/') ? '/' : h;
+  }
+
+  // Resolve a route to markup. Detail routes fall back to their index page.
+  function resolve(route){
+    if (PAGES[route]) return { html: PAGES[route](), route: route };
+    if (route.indexOf('/blog/') === 0){
+      var post = renderPost(route.slice(6));
+      if (post) return { html: post, route: '/blog' };
+      return { html: PAGES['/blog'](), route: '/blog' };
+    }
+    if (route.indexOf('/testimonials/') === 0){
+      var rev = renderReview(route.slice(14));
+      if (rev) return { html: rev, route: '/testimonials' };
+      return { html: PAGES['/testimonials'](), route: '/testimonials' };
+    }
+    return { html: PAGES['/'](), route: '/' };
+  }
+
+  function render(){
+    cleanup();
+    var res = resolve(currentRoute());
+    var route = res.route;
+    view.innerHTML = res.html;
+    view.style.animation = 'none'; void view.offsetWidth; view.style.animation = '';
+
+    paintPlaceholders(view);
+    initHero();
+    initMarquee();
+    initTestimonialsPage();
+    initBlogPage();
+    initAbout();
+
+    navLinks.querySelectorAll('a[data-route]').forEach(function(a){
+      a.classList.toggle('is-current', a.getAttribute('data-route') === route);
+    });
+    navLinks.classList.remove('is-open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded','false');
+
+    window.scrollTo({ top:0, behavior:'auto' });
+    var h1 = view.querySelector('h1');
+    document.title = route === '/' ? 'AjayPrabhu.com'
+      : 'AjayPrabhu.com — ' + (h1 ? h1.textContent.trim().slice(0,60) : route.slice(1));
+  }
+
+  /* Beam logo: swap the dashed slot for the real file once it loads.
+     If the file isn't there, the slot simply stays. */
+  (function(){
+    var band = document.getElementById('beamBand');
+    if (!band || !IMAGES.beamLogo) return;
+    var probe = new Image();
+    probe.onload = function(){
+      band.innerHTML = '';
+      var img = document.createElement('img');
+      img.src = IMAGES.beamLogo;
+      img.alt = 'Beam Real Estate LLC';
+      img.style.height = '74px';
+      band.appendChild(img);
+    };
+    probe.src = IMAGES.beamLogo;
+  })();
+
+  window.addEventListener('hashchange', render);
+
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // sticky-nav shadow
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('is-stuck', window.scrollY > 120);
+  }, { passive:true });
+
+  render();
+})();
+</script>
+</body>
+</html>
